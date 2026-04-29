@@ -443,32 +443,22 @@
       <div class="b-row"><span class="b-key">帳　　號</span><span class="b-val" style="font-size:0.95rem;letter-spacing:0.08em;">901620382731</span></div>
     </div>
 
-    <!-- 末5碼 + 九宮格鍵盤 -->
-    <div class="f-group" style="margin-bottom:0">
-      <label class="f-label">匯款帳號末 5 碼</label>
-      <div class="numpad-display" id="bank5-display">
-        <span id="bank5-dots">_ _ _ _ _</span>
-      </div>
-      <input id="f-bank5" type="hidden" value="">
-      <div class="f-err" id="e-bank5">請填寫匯款帳號末 5 碼（5 位數字）</div>
-
-      <!-- 九宮格 -->
-      <div class="numpad">
-        <button class="np-btn" onclick="npInput('1')">1</button>
-        <button class="np-btn" onclick="npInput('2')">2</button>
-        <button class="np-btn" onclick="npInput('3')">3</button>
-        <button class="np-btn" onclick="npInput('4')">4</button>
-        <button class="np-btn" onclick="npInput('5')">5</button>
-        <button class="np-btn" onclick="npInput('6')">6</button>
-        <button class="np-btn" onclick="npInput('7')">7</button>
-        <button class="np-btn" onclick="npInput('8')">8</button>
-        <button class="np-btn" onclick="npInput('9')">9</button>
-        <button class="np-btn np-clear" onclick="npClear()">清除</button>
-        <button class="np-btn" onclick="npInput('0')">0</button>
-        <button class="np-btn np-del" onclick="npDel()">⌫</button>
-      </div>
-    </div>
+    <!-- 修改後的輸入框：移除了手寫九宮格，改用系統鍵盤 -->
+  <div class="f-group" style="margin-bottom:0">
+    <label class="f-label">匯款帳號末 5 碼</label>
+    <input 
+      id="f-bank5" 
+      class="f-input" 
+      type="tel" 
+      pattern="\d{5}" 
+      inputmode="numeric" 
+      maxlength="5" 
+      placeholder="請輸入 5 位數字"
+      oninput="this.value=this.value.replace(/[^\d]/g,'')"
+    >
+    <div class="f-err" id="e-bank5">請填寫匯款帳號末 5 碼（5 位數字）</div>
   </div>
+</div>
 
   <!-- SUCCESS -->
   <div class="success-box a5" id="success-box" style="display:none;">
