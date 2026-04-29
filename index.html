@@ -1,114 +1,193 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>山之源桃園 | 大雪山的紅寶石水蜜桃</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: { extend: { colors: { brand: '#1a6e42', accent: '#f96b3f' }, fontFamily: { serif: ['"Noto Serif TC"', 'serif'], sans: ['"Noto Sans TC"', 'sans-serif'] } } }
-        }
-    </script>
-    <style>
-        body { font-family: 'Noto Sans TC', sans-serif; background-color: #fdfaf7; }
-        .hero-section { height: 80vh; background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), url('DSC05348.jpg'); background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; color: white; text-align: center; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>山之源桃園 — 大雪山的紅寶石水蜜桃</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        peach: { 50:'#fff5f2', 100:'#ffe8e0', 200:'#ffc9b5', 300:'#ffaa8a', 400:'#ff8a63', 500:'#f96b3f', 600:'#e04d22', 700:'#be3a16', DEFAULT:'#ffaa8a' },
+        blossom: { 50:'#fff0f5', 100:'#ffdde9', 200:'#ffbbce', 300:'#ff99b8', 400:'#f070a0', 500:'#e05090', 600:'#c03878', DEFAULT:'#ff99b8' },
+        pine: { 50:'#e8f4ee', 100:'#c0e0cc', 200:'#88c4a4', 300:'#52a87c', 400:'#2d8a5a', 500:'#1a6e42', 600:'#0f5430', 700:'#0a3d22', DEFAULT:'#1a6e42' },
+      },
+      fontFamily: { serif: ['"Noto Serif TC"', 'serif'], sans: ['"Noto Sans TC"', 'sans-serif'] }
+    }
+  }
+}
+</script>
+<style>
+  body { font-family: 'Noto Sans TC', sans-serif; background: #fff5f2; color: #2a1a10; scroll-behavior: smooth; }
+  .hero-bg { background: linear-gradient(160deg, #fff0f5 0%, #ffe8e0 40%, #e8f4ee 100%); position: relative; overflow: hidden; }
+  .section-divider { width: 60px; height: 2px; background: linear-gradient(90deg, #ff99b8, #1a6e42); margin: 0 auto 1.5rem; border-radius: 2px; }
+  .price-card { border-radius: 24px; padding: 2rem; transition: all 0.3s ease; background: white; }
+  .price-card:hover { transform: translateY(-8px); box-shadow: 0 12px 30px rgba(255,153,184,0.15); }
+  .price-card.featured { background: linear-gradient(145deg, #1a6e42, #0f5430); color: white; }
+  .input-field { background: rgba(0,0,0,0.05); border-radius: 12px; padding: 0.8rem; border: 1px solid rgba(0,0,0,0.1); width: 100%; text-align: center; font-size: 1.25rem; font-weight: bold; outline: none; }
+  .featured .input-field { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; }
+  .submit-btn { background: linear-gradient(135deg, #1a6e42, #2d8a5a); color: white; border-radius: 50px; padding: 1.2rem; width: 100%; font-family: 'Noto Serif TC', serif; font-weight: 700; font-size: 1.2rem; transition: all 0.3s; box-shadow: 0 4px 15px rgba(26,110,66,0.3); }
+  .submit-btn:hover:not(:disabled) { transform: scale(1.02); box-shadow: 0 6px 20px rgba(26,110,66,0.4); }
+  .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+</style>
 </head>
 <body>
 
-<nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-stone-200">
-    <div class="max-w-6xl mx-auto px-5 py-3 flex justify-between items-center">
-        <div class="flex items-center gap-2">
-            <span class="text-xl">🍑</span>
-            <span class="font-serif font-bold text-brand text-lg tracking-widest">山之源桃園</span>
-        </div>
-        <a href="#order" class="bg-brand text-white px-5 py-2 rounded-full text-sm font-serif">立即預購</a>
+<!-- NAV -->
+<nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-pink-100">
+  <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-2">
+      <span class="text-2xl">🍑</span>
+      <span class="font-serif font-bold text-pine-600 text-xl tracking-widest">山之源桃園</span>
     </div>
+    <a href="#pricing" class="bg-pine text-white px-6 py-2 rounded-full text-sm font-serif hover:bg-pine-700 transition">立即預購</a>
+  </div>
 </nav>
 
-<header class="hero-section">
+<!-- HERO -->
+<header class="hero-bg py-20 px-6 text-center md:text-left md:flex md:items-center min-h-[80vh]">
+  <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center">
     <div>
-        <h2 class="font-serif text-xl tracking-[0.3em] mb-4">海拔 1,200 公尺 · 產地直送</h2>
-        <h1 class="font-serif text-5xl md:text-7xl font-bold mb-6">大雪山的紅寶石</h1>
+      <div class="inline-block bg-white/60 px-4 py-1 rounded-full text-pine text-sm font-bold mb-6 tracking-widest">🌿 大雪山海拔 1,200M 產地直送</div>
+      <h1 class="font-serif text-5xl md:text-7xl font-bold text-pine-700 mb-6 leading-tight">
+        大雪山的<br><span class="text-blossom-500">紅寶石</span>
+      </h1>
+      <p class="text-lg text-stone-600 leading-relaxed mb-8 font-serif">
+        在大雪山，我們與雲霧一起守護這份甜美。<br>
+        每一顆水蜜桃，都經歷了漫長的低溫淬煉，<br>
+        將這份山林氣息，送到您的餐桌。
+      </p>
+      <button onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})" class="submit-btn max-w-[240px]">挑選這份珍貴 →</button>
     </div>
+    <div class="relative">
+      <img src="DSC05341.jpg" class="rounded-[2rem] shadow-2xl w-full h-[450px] object-cover">
+      <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-xl font-serif text-pine font-bold">
+        ✦ 現採現送，極致爆汁
+      </div>
+    </div>
+  </div>
 </header>
 
-<section id="order" class="bg-stone-100 py-20 px-6">
-    <div class="max-w-5xl mx-auto">
-        <div class="text-center mb-12">
-            <h2 class="font-serif text-3xl font-bold text-brand">選擇訂購規格</h2>
-            <p class="text-accent mt-2 font-bold underline">全館滿兩盒，每盒現折 50 元</p>
+<!-- PRICING & ORDER FORM -->
+<section id="pricing" class="py-24 px-6">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-16">
+      <div class="section-divider"></div>
+      <h2 class="font-serif text-4xl font-bold text-pine-700 mb-4">選擇訂購規格</h2>
+      <p class="text-blossom-500 font-bold tracking-widest">— 全館滿兩盒，每盒現折 50 元 —</p>
+    </div>
+
+    <form id="orderForm">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+        <!-- 8粒裝 -->
+        <div class="price-card">
+          <img src="DSC05394.jpg" class="w-full h-56 object-cover rounded-2xl mb-6">
+          <h3 class="font-serif text-2xl font-bold mb-2">嚴選 8 粒裝</h3>
+          <p class="text-stone-400 text-sm mb-4">纖細優雅 · 分享剛剛好的甜[cite: 1]</p>
+          <p class="text-3xl font-bold text-blossom-500 mb-6">$750 <span class="text-sm font-normal text-stone-400">/ 盒</span></p>
+          <div class="space-y-2">
+            <label class="text-xs font-bold text-stone-400 uppercase tracking-widest">訂購數量 (盒)</label>
+            <input type="number" id="qty8" name="qty8" inputmode="numeric" pattern="[0-9]*" placeholder="0" onfocus="this.select()" onchange="calculate()" class="input-field">
+          </div>
         </div>
 
-        <form id="orderForm" class="max-w-4xl mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-                <!-- 8粒裝 -->
-                <div class="bg-white p-6 rounded-3xl shadow-lg border-2 border-transparent hover:border-brand transition text-center">
-                    <img src="DSC05394.jpg" class="w-full h-60 object-cover rounded-2xl mb-6">
-                    <h3 class="font-serif text-2xl font-bold mt-2">嚴選 8 粒裝</h3>
-                    <p class="text-2xl font-bold text-accent mb-4">$750</p>
-                    <div class="flex items-center gap-4 bg-stone-50 p-4 rounded-xl">
-                        <span class="text-sm font-bold text-stone-500">訂購數量</span>
-                        <!-- 關鍵點：必須有 name="qty8" -->
-                        <input type="number" id="qty8" name="qty8" inputmode="numeric" pattern="[0-9]*" placeholder="0" min="0" onchange="calculate()" class="w-full bg-transparent text-center text-xl font-bold outline-none">
-                    </div>
-                </div>
+        <!-- 6粒裝 (熱門款) -->
+        <div class="price-card featured">
+          <img src="DSC05345.jpg" class="w-full h-56 object-cover rounded-2xl mb-6">
+          <h3 class="font-serif text-2xl font-bold mb-2 text-white">頂級 6 粒裝</h3>
+          <p class="text-pine-100 text-sm mb-4">碩大飽滿 · 極致爆汁的饗宴[cite: 1]</p>
+          <p class="text-3xl font-bold text-peach-300 mb-6">$950 <span class="text-sm font-normal text-pine-200">/ 盒</span></p>
+          <div class="space-y-2">
+            <label class="text-xs font-bold text-pine-200 uppercase tracking-widest">訂購數量 (盒)</label>
+            <input type="number" id="qty6" name="qty6" inputmode="numeric" pattern="[0-9]*" placeholder="0" onfocus="this.select()" onchange="calculate()" class="input-field">
+          </div>
+        </div>
+      </div>
 
-                <!-- 6粒裝 -->
-                <div class="bg-white p-6 rounded-3xl shadow-lg border-2 border-brand relative text-center">
-                    <img src="DSC05345.jpg" class="w-full h-60 object-cover rounded-2xl mb-6">
-                    <h3 class="font-serif text-2xl font-bold mt-2">頂級 6 粒裝</h3>
-                    <p class="text-2xl font-bold text-accent mb-4">$950</p>
-                    <div class="flex items-center gap-4 bg-stone-50 p-4 rounded-xl">
-                        <span class="text-sm font-bold text-stone-500">訂購數量</span>
-                        <!-- 關鍵點：必須有 name="qty6" -->
-                        <input type="number" id="qty6" name="qty6" inputmode="numeric" pattern="[0-9]*"  placeholder="0" min="0" onchange="calculate()" class="w-full bg-transparent text-center text-xl font-bold outline-none">
-                    </div>
-                </div>
+      <!-- 顧客資訊區塊 -->
+      <div class="max-w-2xl mx-auto bg-white rounded-[2.5rem] shadow-xl p-8 md:p-12">
+        <div class="text-center mb-10 pb-8 border-b border-stone-50">
+          <p class="text-stone-400 text-xs tracking-widest mb-2 uppercase">應付總金額 (Total)</p>
+          <p class="text-5xl font-serif font-bold text-blossom-600" id="totalDisplay">$0</p>
+          <input type="hidden" name="total_amount" id="hiddenTotal">
+        </div>
+
+        <div class="space-y-6">
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-xs font-bold text-stone-400 mb-2">收件人姓名</label>
+              <input type="text" name="name" required class="w-full px-5 py-4 rounded-xl bg-stone-50 border-none outline-none focus:ring-2 focus:ring-pine/20 transition">
             </div>
-
-            <div class="max-w-2xl mx-auto bg-white rounded-3xl shadow-2xl p-8">
-                <div class="text-center mb-8 border-b pb-6">
-                    <p class="text-stone-500 text-sm mb-1">應付總金額</p>
-                    <p class="text-4xl font-bold text-accent" id="totalDisplay">$0</p>
-                    <input type="hidden" name="total_amount" id="hiddenTotal">
-                </div>
-
-                <div class="space-y-5">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-sm font-bold text-stone-700 mb-2">收件人姓名</label>
-                            <input type="text" name="name" required class="w-full px-4 py-3 rounded-xl border border-stone-200 outline-none">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-bold text-stone-700 mb-2">電話</label>
-                            <input type="tel" name="phone" inputmode="tel"required class="w-full px-4 py-3 rounded-xl border border-stone-200 outline-none">
-                        </div>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-bold text-stone-700 mb-2">收件地址</label>
-                        <input type="text" name="address" required class="w-full px-4 py-3 rounded-xl border border-stone-200 outline-none">
-                    </div>
-                    <div class="bg-stone-50 p-5 rounded-2xl border border-dashed border-stone-300 text-sm">
-                        <p class="font-bold text-brand mb-1">💰 匯款：華南銀行(008) 帳號 123-456789-012</p>
-                        <label class="block font-bold text-stone-500 mb-1">匯款帳號末五碼</label>
-                        <input type="text" name="bank_id" required class="w-full px-4 py-2 rounded-lg border border-stone-200 outline-none">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-bold text-stone-700 mb-2">備註 (選填)</label>
-                        <textarea name="note" class="w-full px-4 py-3 rounded-xl border border-stone-200 outline-none"></textarea>
-                    </div>
-                    <button type="submit" id="submitBtn" class="w-full bg-brand text-white py-5 rounded-2xl font-serif text-xl font-bold hover:bg-stone-800 transition">確認預購</button>
-                </div>
+            <div>
+              <label class="block text-xs font-bold text-stone-400 mb-2">連絡電話</label>
+              <input type="tel" name="phone" inputmode="tel" required class="w-full px-5 py-4 rounded-xl bg-stone-50 border-none outline-none focus:ring-2 focus:ring-pine/20 transition">
             </div>
-        </form>
-    </div>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-stone-400 mb-2">收件地址</label>
+            <input type="text" name="address" required class="w-full px-5 py-4 rounded-xl bg-stone-50 border-none outline-none focus:ring-2 focus:ring-pine/20 transition">
+          </div>
+          <div class="bg-pine/5 p-6 rounded-2xl border border-pine/10">
+            <p class="font-serif text-pine font-bold mb-2">💰 匯款資訊[cite: 1]</p>
+            <p class="text-sm text-pine-700 mb-4 tracking-tight">華南銀行(008) 帳號 123-456789-012</p>
+            <label class="block text-xs font-bold text-pine-400 mb-2">匯款帳號末五碼</label>
+            <input type="text" name="bank_id" required class="w-full px-4 py-3 rounded-lg border-none shadow-sm outline-none">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-stone-400 mb-2">備註事項 (選填)</label>
+            <textarea name="note" rows="2" class="w-full px-5 py-4 rounded-xl bg-stone-50 border-none outline-none"></textarea>
+          </div>
+          <button type="submit" id="submitBtn" class="submit-btn">確認預購</button>
+          <p class="text-center text-stone-400 text-xs tracking-widest mt-4">產地直送 · 數量有限 · 售完即止[cite: 1]</p>
+        </div>
+      </div>
+    </form>
+  </div>
 </section>
 
+<!-- CONTACT -->
+<section id="contact" class="py-24 px-6 bg-blossom-50">
+  <div class="max-w-3xl mx-auto">
+    <div class="text-center mb-12">
+      <div class="section-divider"></div>
+      <h2 class="font-serif text-3xl font-bold text-pine-700">聯絡我們</h2>
+    </div>
+    <div class="bg-white rounded-[2rem] p-8 md:p-12 shadow-sm border border-pine/10 grid md:grid-cols-2 gap-10">
+      <div>
+        <h3 class="font-serif text-xl font-bold text-pine-700 mb-6">🌿 山之源桃園</h3>
+        <ul class="space-y-4 text-sm text-stone-600">
+          <li class="flex items-start gap-3"><span>📍</span> <div><p class="font-bold text-pine-600">農場地址</p>南投縣仁愛鄉高山路 123 號[cite: 1]</div></li>
+          <li class="flex items-start gap-3"><span>📞</span> <div><p class="font-bold text-pine-600">訂購專線</p>049-123-4567[cite: 1]</div></li>
+          <li class="flex items-start gap-3"><span>📱</span> <div><p class="font-bold text-pine-600">LINE 客服</p>@yamanosara[cite: 1]</div></li>
+        </ul>
+      </div>
+      <div class="border-t md:border-t-0 md:border-l border-stone-100 pt-8 md:pt-0 md:pl-10">
+        <h3 class="font-serif text-lg font-bold text-stone-700 mb-4 text-spacing">⏰ 服務時間[cite: 1]</h3>
+        <p class="text-sm text-stone-500 leading-loose">
+          週一 ～ 週五 9:00 - 18:00<br>
+          週六 9:00 - 16:00<br>
+          週日 公休[cite: 1]
+        </p>
+        <div class="mt-6 p-4 bg-pine/5 rounded-xl border-l-4 border-pine">
+          <p class="text-xs text-pine-600 leading-relaxed">
+            📣 採摘旺季（6月–8月）訂單量大，建議提前 3 天預訂。[cite: 1]
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="bg-pine-700 text-pine-100 py-10 text-center text-sm">
+  <p class="font-serif text-lg text-white mb-2 tracking-widest">山之源桃園</p>
+  <p>© 2026 山之源桃園 All Rights Reserved[cite: 1]</p>
+</footer>
+
 <script>
-    // 這裡請貼上你的 /exec 網址
+    // 🚀 已自動帶入您的 Google Script 網址
     const scriptURL = 'https://script.google.com/macros/s/AKfycbxUel6rxdJcctE-tclrThQWE3CfBsG3Egk3coi6Uf-ZTiaYk9s0cG3P8w8GO7nMHsGF/exec';
 
     function calculate() {
@@ -128,18 +207,18 @@
         if (document.getElementById('hiddenTotal').value <= 0) return alert('請選擇訂購數量');
         
         btn.disabled = true;
-        btn.innerText = '處理中...';
+        btn.innerText = '正在為您聯繫山林...';
 
         fetch(scriptURL, { method: 'POST', body: new FormData(form)})
             .then(response => {
-                alert('感謝預購！我們將儘速與您聯繫。');
+                alert('感謝預購！這份來自大雪山的清甜即將與您相遇。');
                 form.reset();
                 calculate();
                 btn.disabled = false;
                 btn.innerText = '確認預購';
             })
             .catch(error => {
-                alert('失敗，請檢查網址或權限設定');
+                alert('發送失敗，請檢查網址或稍後再試');
                 btn.disabled = false;
                 btn.innerText = '確認預購';
             });
