@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>山之源桃園 — 產地直送水蜜桃</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;700&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        peach: { 50:'#fff5f2', 100:'#ffe8e0', 200:'#ffc9b5', 300:'#ffaa8a', 400:'#ff8a63', 500:'#f96b3f', 600:'#e04d22', 700:'#be3a16', DEFAULT:'#ffaa8a' },
+        blossom: { 50:'#fff0f5', 100:'#ffdde9', 200:'#ffbbce', 300:'#ff99b8', 400:'#f070a0', 500:'#e05090', 600:'#c03878', DEFAULT:'#ff99b8' },
+        pine: { 50:'#e8f4ee', 100:'#c0e0cc', 200:'#88c4a4', 300:'#52a87c', 400:'#2d8a5a', 500:'#1a6e42', 600:'#0f5430', 700:'#0a3d22', DEFAULT:'#1a6e42' },
+      },
+      fontFamily: {
+        serif: ['"Noto Serif TC"', 'serif'],
+        sans: ['"Noto Sans TC"', 'sans-serif'],
+      }
+    }
+  }
+}
+</script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Noto Sans TC', sans-serif; background: #fff5f2; color: #2a1a10; }
+  .hero-bg {
+    background: linear-gradient(160deg, #fff0f5 0%, #ffe8e0 40%, #e8f4ee 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(255,153,184,0.25) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; left: -60px;
+    width: 320px; height: 320px;
+    background: radial-gradient(circle, rgba(26,110,66,0.12) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .section-divider {
+    width: 60px; height: 2px;
+    background: linear-gradient(90deg, #ff99b8, #1a6e42);
+    margin: 0 auto 1.5rem;
+    border-radius: 2px;
+  }
+  .feature-card {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem 1.5rem;
+    box-shadow: 0 4px 24px rgba(255,100,120,0.08), 0 1px 4px rgba(0,0,0,0.04);
+    border: 1px solid rgba(255,153,184,0.2);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .feature-card:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(255,100,120,0.14); }
+  .price-card {
+    border-radius: 20px;
+    padding: 2rem 1.5rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .price-card:hover { transform: translateY(-6px); }
+  .price-card.featured {
+    background: linear-gradient(145deg, #1a6e42, #0f5430);
+    color: white;
+    box-shadow: 0 8px 32px rgba(26,110,66,0.3);
+  }
+  .price-card.standard {
+    background: white;
+    border: 1.5px solid rgba(255,153,184,0.4);
+    box-shadow: 0 4px 20px rgba(255,153,184,0.12);
+  }
+  .order-btn {
+    background: linear-gradient(135deg, #1a6e42, #2d8a5a);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 20px rgba(26,110,66,0.35);
+  }
+  .order-btn:hover { transform: translateY(-2px) scale(1.03); box-shadow: 0 8px 28px rgba(26,110,66,0.45); }
+  .order-btn-sm {
+    background: linear-gradient(135deg, #ff99b8, #f070a0);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 0.7rem 2rem;
+    font-size: 0.95rem;
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 500;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 16px rgba(240,112,160,0.35);
+    margin-top: 1.2rem;
+  }
+  .order-btn-sm:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(240,112,160,0.45); }
+  .nav { background: rgba(255,255,255,0.92); backdrop-filter: blur(8px); }
+  .badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #ff99b8, #ffaa8a);
+    color: white;
+    border-radius: 50px;
+    padding: 0.25rem 0.9rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+  }
+  .contact-card {
+    background: linear-gradient(135deg, #fff0f5, #e8f4ee);
+    border-radius: 20px;
+    border: 1px solid rgba(26,110,66,0.15);
+    padding: 2.5rem 2rem;
+  }
+  .tag {
+    display: inline-block;
+    background: rgba(26,110,66,0.1);
+    color: #0f5430;
+    border-radius: 50px;
+    padding: 0.2rem 0.8rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin: 0.2rem;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav sticky top-0 z-50 border-b border-pink-100">
+  <div class="max-w-5xl mx-auto px-6 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-2">
+      <span style="font-size:1.5rem">🍑</span>
+      <span style="font-family:'Noto Serif TC',serif; font-weight:700; color:#0f5430; font-size:1.1rem; letter-spacing:0.05em">山之源桃園</span>
+    </div>
+    <div class="hidden md:flex items-center gap-6" style="font-size:0.9rem; color:#555;">
+      <a href="#features" style="color:#1a6e42; text-decoration:none;">產品特色</a>
+      <a href="#pricing" style="color:#1a6e42; text-decoration:none;">訂購方案</a>
+      <a href="#faq" style="color:#1a6e42; text-decoration:none;">常見問題</a>
+      <a href="#contact" style="color:#1a6e42; text-decoration:none;">聯絡我們</a>
+    </div>
+    <button class="order-btn" style="padding:0.5rem 1.4rem; font-size:0.9rem;" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">立即訂購</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero-bg" style="min-height:88vh; display:flex; align-items:center; padding: 4rem 1.5rem;">
+  <div class="max-w-5xl mx-auto w-full" style="position:relative; z-index:1;">
+    <div class="flex flex-col md:flex-row items-center gap-12">
+      <div style="flex:1;">
+        <div class="badge" style="margin-bottom:1.2rem;">🌿 產地直送・限量預購</div>
+        <h1 style="font-family:'Noto Serif TC',serif; font-size:clamp(2.2rem,5vw,3.8rem); font-weight:700; line-height:1.25; color:#0a3d22; margin-bottom:1rem;">
+          山之源桃園<br>
+          <span style="color:#e05090;">產地直送</span><br>
+          <span style="font-size:0.75em; font-weight:400; color:#333;">水蜜桃</span>
+        </h1>
+        <p style="font-size:1.1rem; color:#555; line-height:1.9; margin-bottom:2rem; max-width:440px;">
+          海拔 1,200 公尺高山農場，每一顆桃子都在最飽滿的時刻，由農家人親手採摘，隔日直送到您家門口。
+        </p>
+        <div class="flex flex-wrap gap-3" style="margin-bottom:2.5rem;">
+          <span class="tag">🏔 高山農場</span>
+          <span class="tag">🤲 手工採摘</span>
+          <span class="tag">📦 產地直送</span>
+          <span class="tag">🌸 無農藥栽培</span>
+        </div>
+        <button class="order-btn" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">
+          立即訂購 →
+        </button>
+      </div>
+      <div style="flex:1; display:flex; justify-content:center; align-items:center; position:relative;">
+        <div style="position:relative; width:340px;">
+          <img src="DSC05341.jpg" alt="水蜜桃特寫" style="width:100%; height:320px; object-fit:cover; border-radius:24px; box-shadow:0 20px 60px rgba(255,120,140,0.3);">
+          <!-- Floating badges -->
+          <div style="position:absolute; top:-12px; right:-12px; background:white; border-radius:12px; padding:0.5rem 0.8rem; box-shadow:0 4px 16px rgba(255,120,140,0.2); font-size:0.8rem; color:#1a6e42; font-weight:500;">
+            🌿 海拔 1,200m
+          </div>
+          <div style="position:absolute; bottom:-12px; left:-12px; background:white; border-radius:12px; padding:0.5rem 0.8rem; box-shadow:0 4px 16px rgba(26,110,66,0.15); font-size:0.8rem; color:#e05090; font-weight:500;">
+            ✦ 現採現送
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features" style="padding:5rem 1.5rem; background:white;">
+  <div class="max-w-5xl mx-auto">
+    <div style="text-align:center; margin-bottom:3rem;">
+      <div class="section-divider"></div>
+      <h2 style="font-family:'Noto Serif TC',serif; font-size:1.9rem; font-weight:700; color:#0a3d22; margin-bottom:0.6rem;">我們的堅持</h2>
+      <p style="color:#888; font-size:0.95rem;">每一顆桃子背後，都有一個故事</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="feature-card" style="text-align:center;">
+        <img src="DSC05351.jpg" alt="高山農場環境" style="width:100%; height:140px; object-fit:cover; border-radius:12px; margin-bottom:1rem;">
+        <h3 style="font-family:'Noto Serif TC',serif; font-size:1.15rem; font-weight:700; color:#0f5430; margin-bottom:0.7rem;">高山有機農場</h3>
+        <p style="color:#666; font-size:0.92rem; line-height:1.8;">坐落海拔 1,200 公尺的山地農場，日夜溫差大，造就桃子獨特的甜度與香氣，自然好滋味。</p>
+      </div>
+      <div class="feature-card" style="text-align:center;">
+        <img src="DSC05348.jpg" alt="樹上水蜜桃" style="width:100%; height:140px; object-fit:cover; border-radius:12px; margin-bottom:1rem;">
+        <h3 style="font-family:'Noto Serif TC',serif; font-size:1.15rem; font-weight:700; color:#0f5430; margin-bottom:0.7rem;">純手工採摘</h3>
+        <p style="color:#666; font-size:0.92rem; line-height:1.8;">拒絕機械採收，農家人逐顆確認熟成度，只摘最飽滿的那一顆，確保每盒品質一致。</p>
+      </div>
+      <div class="feature-card" style="text-align:center;">
+        <img src="DSC05394.jpg" alt="精美包裝水蜜桃" style="width:100%; height:140px; object-fit:cover; border-radius:12px; margin-bottom:1rem;">
+        <h3 style="font-family:'Noto Serif TC',serif; font-size:1.15rem; font-weight:700; color:#0f5430; margin-bottom:0.7rem;">採摘隔日直送</h3>
+        <p style="color:#666; font-size:0.92rem; line-height:1.8;">採摘當天低溫保鮮，隔日以保鮮冷鏈宅配送達，讓您在家就能品嚐山頂的新鮮原味。</p>
+      </div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6" style="margin-top:1.5rem;">
+      <div class="feature-card" style="display:flex; align-items:center; gap:1.5rem;">
+        <div style="font-size:2.5rem; flex-shrink:0;">🌸</div>
+        <div>
+          <h3 style="font-family:'Noto Serif TC',serif; font-size:1.05rem; font-weight:700; color:#0f5430; margin-bottom:0.4rem;">無農藥友善栽培</h3>
+          <p style="color:#666; font-size:0.88rem; line-height:1.75;">遵循友善農法，不使用除草劑與化學農藥，讓土地與桃樹自然共生，吃得安心。</p>
+        </div>
+      </div>
+      <div class="feature-card" style="display:flex; align-items:center; gap:1.5rem;">
+        <div style="font-size:2.5rem; flex-shrink:0;">🎁</div>
+        <div>
+          <h3 style="font-family:'Noto Serif TC',serif; font-size:1.05rem; font-weight:700; color:#0f5430; margin-bottom:0.4rem;">精美禮盒包裝</h3>
+          <p style="color:#666; font-size:0.88rem; line-height:1.75;">採用日系簡約風格禮盒，附提袋與手寫祝福卡，是送禮自用都合適的夏日好選擇。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" style="padding:5rem 1.5rem; background:#fff5f2;">
+  <div class="max-w-5xl mx-auto">
+    <div style="text-align:center; margin-bottom:3rem;">
+      <div class="section-divider"></div>
+      <h2 style="font-family:'Noto Serif TC',serif; font-size:1.9rem; font-weight:700; color:#0a3d22; margin-bottom:0.6rem;">訂購方案</h2>
+      <p style="color:#888; font-size:0.95rem;">採摘季限定・售完為止</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="price-card standard">
+        <img src="DSC05379.jpg" alt="嚐鮮小盒" style="width:100%; height:120px; object-fit:cover; border-radius:12px; margin-bottom:1rem;">
+        <div style="font-family:'Noto Serif TC',serif; font-size:1.15rem; font-weight:700; color:#0f5430; margin-bottom:0.4rem;">嚐鮮小盒</div>
+        <div style="font-size:0.85rem; color:#999; margin-bottom:0.8rem;">6 顆裝 · 約 600g</div>
+        <!-- 預購優惠標籤 -->
+        <div style="display:inline-block; background:linear-gradient(135deg,#ff99b8,#ffaa8a); color:white; border-radius:50px; padding:0.2rem 0.9rem; font-size:0.75rem; font-weight:500; margin-bottom:0.8rem;">🎉 預購享 9 折優惠</div>
+        <div style="margin-bottom:0.5rem;">
+          <span style="font-size:1rem; color:#bbb; text-decoration:line-through; font-family:'Noto Serif TC',serif;">$944</span>
+          <span style="font-size:0.8rem; color:#bbb;"> 原價</span>
+        </div>
+        <div style="margin-bottom:1rem;">
+          <span style="font-size:2.2rem; font-weight:700; color:#e05090; font-family:'Noto Serif TC',serif;">$850</span>
+          <span style="color:#aaa; font-size:0.9rem;"> / 盒</span>
+        </div>
+        <ul style="list-style:none; font-size:0.88rem; color:#555; line-height:2.2;">
+          <li>✓ 嚴選高山水蜜桃 6 顆</li>
+          <li>✓ 低溫保鮮冷鏈宅配</li>
+          <li>✓ 精美提盒包裝</li>
+          <li style="color:#ccc;">— 手寫祝福卡</li>
+          <li style="color:#ccc;">— 追加優惠</li>
+        </ul>
+        <button class="order-btn-sm" style="width:100%;">立即預購</button>
+      </div>
+      <div class="price-card featured" style="position:relative;">
+        <div style="position:absolute; top:-14px; left:50%; transform:translateX(-50%); background:linear-gradient(135deg,#ff99b8,#ffaa8a); color:white; border-radius:50px; padding:0.3rem 1.2rem; font-size:0.8rem; font-weight:500; white-space:nowrap; box-shadow:0 4px 12px rgba(255,153,184,0.4);">
+          ✦ 最受歡迎
+        </div>
+        <img src="DSC05345.jpg" alt="典藏禮盒" style="width:100%; height:120px; object-fit:cover; border-radius:12px; margin-bottom:1rem; margin-top:0.5rem;">
+        <div style="font-family:'Noto Serif TC',serif; font-size:1.15rem; font-weight:700; color:white; margin-bottom:0.4rem;">典藏禮盒</div>
+        <div style="font-size:0.85rem; color:rgba(255,255,255,0.65); margin-bottom:0.8rem;">12 顆裝 · 約 1.2kg</div>
+        <!-- 預購優惠標籤 -->
+        <div style="display:inline-block; background:rgba(255,153,184,0.4); color:white; border-radius:50px; padding:0.2rem 0.9rem; font-size:0.75rem; font-weight:500; margin-bottom:0.8rem; border:1px solid rgba(255,153,184,0.5);">🎉 預購享 9 折優惠</div>
+        <div style="margin-bottom:0.5rem;">
+          <span style="font-size:1rem; color:rgba(255,255,255,0.4); text-decoration:line-through; font-family:'Noto Serif TC',serif;">$1,667</span>
+          <span style="font-size:0.8rem; color:rgba(255,255,255,0.4);"> 原價</span>
+        </div>
+        <div style="margin-bottom:1rem;">
+          <span style="font-size:2.2rem; font-weight:700; color:#ffbb88; font-family:'Noto Serif TC',serif;">$1,500</span>
+          <span style="color:rgba(255,255,255,0.6); font-size:0.9rem;"> / 盒</span>
+        </div>
+        <ul style="list-style:none; font-size:0.88rem; color:rgba(255,255,255,0.85); line-height:2.2;">
+          <li>✓ 嚴選高山水蜜桃 12 顆</li>
+          <li>✓ 低溫保鮮冷鏈宅配</li>
+          <li>✓ 精美日式禮盒含提袋</li>
+          <li>✓ 手寫祝福卡</li>
+          <li style="color:rgba(255,255,255,0.45);">— 追加優惠</li>
+        </ul>
+        <button style="width:100%; margin-top:1.2rem; background:linear-gradient(135deg,#ff99b8,#f070a0); color:white; border:none; border-radius:50px; padding:0.75rem 2rem; font-size:0.95rem; font-family:'Noto Serif TC',serif; font-weight:500; cursor:pointer; box-shadow:0 4px 16px rgba(240,112,160,0.4);">立即預購</button>
+      </div>
+      <div class="price-card standard">
+        <img src="DSC05346.jpg" alt="農場大禮箱" style="width:100%; height:120px; object-fit:cover; border-radius:12px; margin-bottom:1rem;">
+        <div style="font-family:'Noto Serif TC',serif; font-size:1.15rem; font-weight:700; color:#0f5430; margin-bottom:0.4rem;">農場大禮箱</div>
+        <div style="font-size:0.85rem; color:#999; margin-bottom:0.8rem;">20 顆裝 · 約 2kg</div>
+        <!-- 預購優惠標籤 -->
+        <div style="display:inline-block; background:linear-gradient(135deg,#52a87c,#1a6e42); color:white; border-radius:50px; padding:0.2rem 0.9rem; font-size:0.75rem; font-weight:500; margin-bottom:0.8rem;">🎉 預購享 9 折優惠</div>
+        <div style="margin-bottom:0.5rem;">
+          <span style="font-size:1rem; color:#bbb; text-decoration:line-through; font-family:'Noto Serif TC',serif;">$2,667</span>
+          <span style="font-size:0.8rem; color:#bbb;"> 原價</span>
+        </div>
+        <div style="margin-bottom:1rem;">
+          <span style="font-size:2.2rem; font-weight:700; color:#e05090; font-family:'Noto Serif TC',serif;">$2,400</span>
+          <span style="color:#aaa; font-size:0.9rem;"> / 箱</span>
+        </div>
+        <ul style="list-style:none; font-size:0.88rem; color:#555; line-height:2.2;">
+          <li>✓ 嚴選高山水蜜桃 20 顆</li>
+          <li>✓ 低溫保鮮冷鏈宅配</li>
+          <li>✓ 精美日式禮盒含提袋</li>
+          <li>✓ 手寫祝福卡</li>
+          <li>✓ 下次訂購再享 9 折</li>
+        </ul>
+        <button class="order-btn-sm" style="width:100%;">立即預購</button>
+      </div>
+    </div>
+    <div style="margin-top:3rem; background:linear-gradient(135deg,#1a6e42,#0f5430); border-radius:20px; padding:2.5rem 2rem; text-align:center; box-shadow:0 8px 32px rgba(26,110,66,0.25);">
+      <p style="font-family:'Noto Serif TC',serif; font-size:1.3rem; color:white; font-weight:500; margin-bottom:0.5rem;">🍑 季節限定，採完即止</p>
+      <p style="color:rgba(255,255,255,0.75); font-size:0.95rem; margin-bottom:1.8rem;">每年採摘季僅 6 週，錯過再等一年</p>
+      <button class="order-btn" style="background:linear-gradient(135deg,#ff99b8,#f070a0); box-shadow:0 4px 20px rgba(240,112,160,0.5); font-size:1.05rem;">
+        🛒 立即訂購水蜜桃
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section style="padding:4rem 1.5rem; background:white;">
+  <div class="max-w-4xl mx-auto">
+    <div style="text-align:center; margin-bottom:2.5rem;">
+      <div class="section-divider"></div>
+      <h2 style="font-family:'Noto Serif TC',serif; font-size:1.6rem; font-weight:700; color:#0a3d22;">顧客真實好評</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      <div style="background:#fff5f2; border-radius:16px; padding:1.5rem; border:1px solid rgba(255,153,184,0.2);">
+        <div style="color:#f070a0; font-size:1rem; margin-bottom:0.8rem;">★★★★★</div>
+        <p style="color:#444; font-size:0.9rem; line-height:1.8; margin-bottom:1rem;">「香氣超濃郁！打開箱子就聞到桃子香，果肉飽滿多汁，是我吃過最好吃的水蜜桃！」</p>
+        <div style="font-size:0.85rem; color:#888;">— 台北 林小姐</div>
+      </div>
+      <div style="background:#e8f4ee; border-radius:16px; padding:1.5rem; border:1px solid rgba(26,110,66,0.15);">
+        <div style="color:#f070a0; font-size:1rem; margin-bottom:0.8rem;">★★★★★</div>
+        <p style="color:#444; font-size:0.9rem; line-height:1.8; margin-bottom:1rem;">「禮盒包裝很精緻，拿來送長輩非常有面子，對方收到超開心，已經訂第三次了！」</p>
+        <div style="font-size:0.85rem; color:#888;">— 新竹 陳先生</div>
+      </div>
+      <div style="background:#fff5f2; border-radius:16px; padding:1.5rem; border:1px solid rgba(255,153,184,0.2);">
+        <div style="color:#f070a0; font-size:1rem; margin-bottom:0.8rem;">★★★★★</div>
+        <p style="color:#444; font-size:0.9rem; line-height:1.8; margin-bottom:1rem;">「訂購後隔天就到貨，新鮮度超讚，而且整箱品質都很整齊，不像市場買的良莠不齊。」</p>
+        <div style="font-size:0.85rem; color:#888;">— 台中 王小姐</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" style="padding:5rem 1.5rem; background:white;">
+  <div class="max-w-3xl mx-auto">
+    <div style="text-align:center; margin-bottom:3rem;">
+      <div class="section-divider"></div>
+      <h2 style="font-family:'Noto Serif TC',serif; font-size:1.9rem; font-weight:700; color:#0a3d22; margin-bottom:0.6rem;">常見問題</h2>
+      <p style="color:#888; font-size:0.95rem;">關於冷藏運送與訂購的常見疑問</p>
+    </div>
+    <div id="faq-list" style="display:flex; flex-direction:column; gap:0.8rem;">
+
+      <div class="faq-item" style="border-radius:14px; border:1px solid rgba(26,110,66,0.15); overflow:hidden;">
+        <button onclick="toggleFaq(this)" style="width:100%; text-align:left; padding:1.2rem 1.5rem; background:#f8fdf9; border:none; cursor:pointer; display:flex; justify-content:space-between; align-items:center; font-family:'Noto Serif TC',serif; font-size:1rem; font-weight:500; color:#0f5430;">
+          🚚 桃子是用什麼方式運送？溫度有保障嗎？
+          <span class="faq-arrow" style="font-size:1.1rem; color:#1a6e42; transition:transform 0.3s; flex-shrink:0;">＋</span>
+        </button>
+        <div class="faq-body" style="display:none; padding:1rem 1.5rem 1.4rem; background:white; color:#555; font-size:0.92rem; line-height:1.9; border-top:1px solid rgba(26,110,66,0.1);">
+          我們採用 <strong style="color:#0f5430;">全程低溫冷鏈宅配（0–7°C）</strong>，搭配保麗龍保鮮盒與冰寶，確保桃子從農場到您手中全程低溫。夏季旺季（6–8月）每日上午截單，隔日配送。
+        </div>
+      </div>
+
+      <div class="faq-item" style="border-radius:14px; border:1px solid rgba(26,110,66,0.15); overflow:hidden;">
+        <button onclick="toggleFaq(this)" style="width:100%; text-align:left; padding:1.2rem 1.5rem; background:#f8fdf9; border:none; cursor:pointer; display:flex; justify-content:space-between; align-items:center; font-family:'Noto Serif TC',serif; font-size:1rem; font-weight:500; color:#0f5430;">
+          📦 收到桃子後要怎麼保存？
+          <span class="faq-arrow" style="font-size:1.1rem; color:#1a6e42; transition:transform 0.3s; flex-shrink:0;">＋</span>
+        </button>
+        <div class="faq-body" style="display:none; padding:1rem 1.5rem 1.4rem; background:white; color:#555; font-size:0.92rem; line-height:1.9; border-top:1px solid rgba(26,110,66,0.1);">
+          收到後請立即放入冰箱冷藏（約 5°C），建議 <strong style="color:#0f5430;">3–5 天內食用完畢</strong>。若桃子尚未完全熟成，可先置於室溫 1 天催熟，出現香氣後再冷藏保存。請勿直接放入冷凍庫。
+        </div>
+      </div>
+
+      <div class="faq-item" style="border-radius:14px; border:1px solid rgba(26,110,66,0.15); overflow:hidden;">
+        <button onclick="toggleFaq(this)" style="width:100%; text-align:left; padding:1.2rem 1.5rem; background:#f8fdf9; border:none; cursor:pointer; display:flex; justify-content:space-between; align-items:center; font-family:'Noto Serif TC',serif; font-size:1rem; font-weight:500; color:#0f5430;">
+          📅 可以指定配送日期嗎？
+          <span class="faq-arrow" style="font-size:1.1rem; color:#1a6e42; transition:transform 0.3s; flex-shrink:0;">＋</span>
+        </button>
+        <div class="faq-body" style="display:none; padding:1rem 1.5rem 1.4rem; background:white; color:#555; font-size:0.92rem; line-height:1.9; border-top:1px solid rgba(26,110,66,0.1);">
+          可以！訂購時請在備註欄填寫希望到貨的日期，我們會盡量安排。旺季期間建議 <strong style="color:#0f5430;">提前 5–7 天</strong> 預訂以確保您指定的日期有貨。農場休假日（週日）不出貨。
+        </div>
+      </div>
+
+      <div class="faq-item" style="border-radius:14px; border:1px solid rgba(26,110,66,0.15); overflow:hidden;">
+        <button onclick="toggleFaq(this)" style="width:100%; text-align:left; padding:1.2rem 1.5rem; background:#f8fdf9; border:none; cursor:pointer; display:flex; justify-content:space-between; align-items:center; font-family:'Noto Serif TC',serif; font-size:1rem; font-weight:500; color:#0f5430;">
+          🌡 收到時桃子是冰的正常嗎？
+          <span class="faq-arrow" style="font-size:1.1rem; color:#1a6e42; transition:transform 0.3s; flex-shrink:0;">＋</span>
+        </button>
+        <div class="faq-body" style="display:none; padding:1rem 1.5rem 1.4rem; background:white; color:#555; font-size:0.92rem; line-height:1.9; border-top:1px solid rgba(26,110,66,0.1);">
+          完全正常！冰涼是冷鏈運送成功的證明。建議拆開後先讓桃子回溫 15–20 分鐘，風味會更豐富。<strong style="color:#0f5430;">若包裝外層有冷凝水珠</strong>，代表全程低溫保鮮良好，請放心食用。
+        </div>
+      </div>
+
+      <div class="faq-item" style="border-radius:14px; border:1px solid rgba(26,110,66,0.15); overflow:hidden;">
+        <button onclick="toggleFaq(this)" style="width:100%; text-align:left; padding:1.2rem 1.5rem; background:#f8fdf9; border:none; cursor:pointer; display:flex; justify-content:space-between; align-items:center; font-family:'Noto Serif TC',serif; font-size:1rem; font-weight:500; color:#0f5430;">
+          💳 預購 9 折什麼時候結束？付款方式？
+          <span class="faq-arrow" style="font-size:1.1rem; color:#1a6e42; transition:transform 0.3s; flex-shrink:0;">＋</span>
+        </button>
+        <div class="faq-body" style="display:none; padding:1rem 1.5rem 1.4rem; background:white; color:#555; font-size:0.92rem; line-height:1.9; border-top:1px solid rgba(26,110,66,0.1);">
+          預購 9 折優惠至 <strong style="color:#0f5430;">採摘季開始前（約 5 月底）</strong> 截止，額滿即結束。付款支援：信用卡、LINE Pay、超商代碼繳費、銀行轉帳。付款完成後我們會以 LINE 通知出貨時間。
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+function toggleFaq(btn) {
+  var body = btn.nextElementSibling;
+  var arrow = btn.querySelector('.faq-arrow');
+  var isOpen = body.style.display === 'block';
+  body.style.display = isOpen ? 'none' : 'block';
+  arrow.textContent = isOpen ? '＋' : '－';
+  arrow.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
+  btn.style.background = isOpen ? '#f8fdf9' : '#edf7f2';
+}
+</script>
+
+<!-- CONTACT -->
+<section id="contact" style="padding:5rem 1.5rem; background:#fff0f5;">
+  <div class="max-w-3xl mx-auto">
+    <div style="text-align:center; margin-bottom:3rem;">
+      <div class="section-divider"></div>
+      <h2 style="font-family:'Noto Serif TC',serif; font-size:1.9rem; font-weight:700; color:#0a3d22; margin-bottom:0.6rem;">聯絡我們</h2>
+      <p style="color:#888; font-size:0.95rem;">有任何問題，歡迎隨時與我們聯繫</p>
+    </div>
+    <div class="contact-card">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <h3 style="font-family:'Noto Serif TC',serif; font-size:1.1rem; font-weight:700; color:#0f5430; margin-bottom:1.2rem;">🌿 山之源桃園</h3>
+          <div style="display:flex; flex-direction:column; gap:1rem; font-size:0.92rem; color:#444;">
+            <div style="display:flex; align-items:flex-start; gap:0.8rem;">
+              <span style="color:#1a6e42; font-size:1.1rem; margin-top:1px;">📍</span>
+              <div>
+                <div style="font-weight:500; color:#0f5430; margin-bottom:2px;">農場地址</div>
+                <div style="color:#666;">南投縣仁愛鄉高山路 123 號</div>
+              </div>
+            </div>
+            <div style="display:flex; align-items:flex-start; gap:0.8rem;">
+              <span style="color:#1a6e42; font-size:1.1rem; margin-top:1px;">📞</span>
+              <div>
+                <div style="font-weight:500; color:#0f5430; margin-bottom:2px;">訂購專線</div>
+                <div style="color:#666;">049-123-4567</div>
+              </div>
+            </div>
+            <div style="display:flex; align-items:flex-start; gap:0.8rem;">
+              <span style="color:#1a6e42; font-size:1.1rem; margin-top:1px;">📱</span>
+              <div>
+                <div style="font-weight:500; color:#0f5430; margin-bottom:2px;">LINE 客服</div>
+                <div style="color:#666;">@yamanosara</div>
+              </div>
+            </div>
+            <div style="display:flex; align-items:flex-start; gap:0.8rem;">
+              <span style="color:#1a6e42; font-size:1.1rem; margin-top:1px;">✉️</span>
+              <div>
+                <div style="font-weight:500; color:#0f5430; margin-bottom:2px;">電子信箱</div>
+                <div style="color:#666;">order@yamanosara.com.tw</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h3 style="font-family:'Noto Serif TC',serif; font-size:1rem; font-weight:700; color:#0f5430; margin-bottom:1rem;">⏰ 服務時間</h3>
+          <div style="font-size:0.88rem; color:#555; line-height:2.2;">
+            <div>週一 ～ 週五　9:00 – 18:00</div>
+            <div>週六　9:00 – 16:00</div>
+            <div style="color:#bbb;">週日 公休</div>
+          </div>
+          <div style="margin-top:1.5rem; padding:1rem; background:rgba(26,110,66,0.07); border-radius:12px; border-left:3px solid #1a6e42;">
+            <p style="font-size:0.85rem; color:#1a6e42; line-height:1.7;">
+              📣 採摘旺季（6月–8月）訂單量大，建議提前 3 天預訂以確保出貨時間。
+            </p>
+          </div>
+          <button class="order-btn" style="margin-top:1.5rem; width:100%; text-align:center; display:block;">
+            🍑 立即訂購
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:#0a3d22; color:rgba(255,255,255,0.7); padding:2rem 1.5rem; text-align:center;">
+  <div class="max-w-5xl mx-auto">
+    <div style="font-family:'Noto Serif TC',serif; font-size:1.2rem; color:white; font-weight:500; margin-bottom:0.5rem;">
+      🍑 山之源桃園
+    </div>
+    <p style="font-size:0.85rem; margin-bottom:0.3rem;">海拔 1,200m 高山農場・產地直送・手採水蜜桃</p>
+    <p style="font-size:0.8rem; color:rgba(255,255,255,0.4); margin-top:1rem;">© 2025 山之源桃園 All Rights Reserved</p>
+  </div>
+</footer>
+
+</body>
+</html>
