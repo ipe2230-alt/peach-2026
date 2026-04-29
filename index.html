@@ -1,173 +1,188 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>山之源桃園 — 大雪山的紅寶石水蜜桃</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-tailwind.config = {
-  theme: {
-    extend: {
-      colors: {
-        pine: { 50:'#e8f4ee', 100:'#c0e0cc', 600:'#0f5430', 700:'#0a3d22', DEFAULT:'#1a6e42' },
-        peach: { 300:'#ffaa8a', 500:'#f96b3f', 600:'#e04d22' },
-        blossom: { 50:'#fff0f5', 500:'#e05090', 600:'#c03878' }
-      },
-      fontFamily: { serif: ['"Noto Serif TC"', 'serif'], sans: ['"Noto Sans TC"', 'sans-serif'] }
-    }
-  }
-}
-</script>
-<style>
-  body { font-family: 'Noto Sans TC', sans-serif; color: #2a1a10; scroll-behavior: smooth; background: #fff5f2; }
-  .hero-fullscreen { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; background: url('DSC05341.jpg') center/cover no-repeat fixed; }
-  .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(255,245,242,0.2), rgba(255,245,242,0.9)); }
-  .glass-card { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.4); border-radius: 3rem; }
-  .price-card { border-radius: 2rem; padding: 2rem; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); background: white; border: 1px solid rgba(255,153,184,0.1); }
-  .price-card:hover { transform: translateY(-12px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
-  .input-field { background: #f8f9fa; border-radius: 1rem; padding: 0.8rem; border: 2px solid transparent; width: 100%; text-align: center; font-size: 1.5rem; font-weight: bold; transition: all 0.3s; }
-  .input-field:focus { border-color: #ff99b8; background: white; outline: none; }
-  .submit-btn { background: linear-gradient(135deg, #1a6e42, #2d8a5a); color: white; border-radius: 50px; padding: 1.2rem; width: 100%; font-family: 'Noto Serif TC', serif; font-weight: 700; font-size: 1.2rem; box-shadow: 0 10px 20px rgba(26,110,66,0.2); transition: all 0.3s; }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>山之源桃園 — 大雪山的紅寶石</title>
+    
+    <!-- 引入字體：明體 (Serif) 與 黑體 (Sans) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;700&display=swap" rel="stylesheet">
+    
+    <!-- 引入 Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Noto Sans TC"', 'sans-serif'],
+                        serif: ['"Noto Serif TC"', 'serif'],
+                    },
+                    colors: {
+                        forest: { 800: '#1a4731', 900: '#123323' },
+                        peach: { 50: '#fff9f7', 100: '#fdf2f0', 200: '#f8a59b' }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- 自訂樣式優化 -->
+    <style>
+        /* 背景處理：手機版滾動，電腦版固定，避免跳動 */
+        .bg-hero {
+            background-image: url('DSC05341.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: scroll; 
+        }
+        @media (min-width: 1024px) {
+            .bg-hero { background-attachment: fixed; }
+        }
+        
+        /* 高級毛玻璃效果 */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
+        
+        /* 輸入框共用樣式 */
+        .input-style {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            margin-top: 0.5rem;
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid #e5e7eb;
+            border-radius: 0.75rem;
+            transition: all 0.2s;
+            outline: none;
+        }
+        .input-style:focus {
+            border-color: #f8a59b;
+            box-shadow: 0 0 0 3px rgba(248, 165, 155, 0.2);
+            background-color: #ffffff;
+        }
+    </style>
 </head>
-<body>
+<body class="bg-hero min-h-screen text-stone-800 flex items-center justify-center p-4 sm:p-8">
 
-<!-- HERO: 滿版大圖 -->
-<header class="hero-fullscreen px-6">
-  <div class="hero-overlay"></div>
-  <div class="relative z-10 max-w-4xl w-full text-center">
-    <div class="inline-block bg-white/80 backdrop-blur px-6 py-2 rounded-full text-pine-700 text-sm font-bold mb-8 tracking-[0.3em] shadow-sm">🏔️ 大雪山海拔 1,200M 產地直送</div>
-    <h1 class="font-serif text-5xl md:text-8xl font-bold text-pine-700 mb-8 leading-tight">大雪山的<br><span class="text-blossom-500">紅寶石</span></h1>
-    <p class="text-xl md:text-2xl text-stone-700 leading-relaxed mb-12 font-serif bg-white/30 inline-block px-6 py-2 rounded-lg">在大雪山，我們與雲霧一起守護這份甜美。</p>
-    <button onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})" class="submit-btn max-w-[280px]">開啟預購之旅 ↓</button>
-  </div>
-</header>
+    <!-- 柔和的背景遮罩，讓卡片更突出 -->
+    <div class="fixed inset-0 bg-white/20 z-0"></div>
 
-<!-- ORDER FORM -->
-<section id="pricing" class="py-24 px-6 relative">
-  <div class="max-w-5xl mx-auto">
-    <div class="text-center mb-20">
-      <h2 class="font-serif text-4xl font-bold text-pine-700 mb-4">旬味規格</h2>
-      <div class="w-16 h-1 bg-blossom-500 mx-auto mb-4 rounded-full"></div>
-      <p class="text-blossom-500 font-bold tracking-widest">— 全館滿兩盒，每盒現折 50 元 —</p>
-    </div>
+    <main class="relative z-10 w-full max-w-2xl glass-panel rounded-[2rem] shadow-2xl p-7 sm:p-12 my-4">
+        
+        <!-- 頂部品牌區塊 -->
+        <header class="text-center mb-10">
+            <h2 class="text-forest-900 tracking-[0.2em] text-xs sm:text-sm font-bold mb-3">— 山之源桃園 —</h2>
+            <h1 class="font-serif text-3xl sm:text-4xl text-forest-800 font-bold mb-5">大雪山的紅寶石</h1>
+            <div class="w-10 h-1 bg-peach-200 mx-auto mb-6"></div>
+            
+            <p class="text-stone-600 text-sm sm:text-base leading-relaxed px-2 italic font-serif">
+                「每一顆水蜜桃，都承載著大雪山冷冽清晨的露水，與父親守護土地的溫度。」
+            </p>
+            <p class="text-stone-600 text-sm sm:text-base mt-3">
+                我們堅持職人栽培，將這份純淨甜美由產地直達到您的手中。
+            </p>
+        </header>
 
-    <form id="orderForm">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mb-20">
-        <!-- 規格卡片 -->
-        <div class="price-card">
-          <div class="overflow-hidden rounded-2xl mb-6"><img src="DSC05394.jpg" class="w-full h-64 object-cover hover:scale-110 transition duration-700"></div>
-          <h3 class="font-serif text-2xl font-bold mb-2">嚴選 8 粒裝</h3>[cite: 1]
-          <p class="text-stone-400 text-sm mb-6">纖細優雅 · 分享剛剛好的甜[cite: 1]</p>
-          <div class="flex items-end gap-2 mb-8"><span class="text-4xl font-bold text-pine-700">$750</span><span class="text-stone-400 pb-1">/ 盒</span></div>[cite: 1]
-          <input type="number" id="qty8" name="qty8" inputmode="numeric" pattern="[0-9]*" placeholder="0" onfocus="this.select()" onchange="calculate()" class="input-field">
-        </div>
-        <div class="price-card border-2 border-blossom-500/20 shadow-lg shadow-blossom-100">
-          <div class="overflow-hidden rounded-2xl mb-6"><img src="DSC05345.jpg" class="w-full h-64 object-cover hover:scale-110 transition duration-700"></div>
-          <h3 class="font-serif text-2xl font-bold mb-2">頂級 6 粒裝</h3>[cite: 1]
-          <p class="text-stone-400 text-sm mb-6">碩大飽滿 · 極致爆汁的饗宴[cite: 1]</p>
-          <div class="flex items-end gap-2 mb-8"><span class="text-4xl font-bold text-pine-700">$950</span><span class="text-stone-400 pb-1">/ 盒</span></div>[cite: 1]
-          <input type="number" id="qty6" name="qty6" inputmode="numeric" pattern="[0-9]*" placeholder="0" onfocus="this.select()" onchange="calculate()" class="input-field">
-        </div>
-      </div>
-
-      <!-- 顧客資訊區塊 -->
-      <div class="max-w-2xl mx-auto glass-card shadow-2xl p-8 md:p-16">
-        <div class="text-center mb-12">
-          <p class="text-stone-400 text-xs tracking-[0.2em] mb-3 uppercase">結帳總金額</p>
-          <p class="text-6xl font-serif font-bold text-blossom-600" id="totalDisplay">$0</p>
-          <input type="hidden" name="total_amount" id="hiddenTotal">
-        </div>
-
-        <div class="grid gap-8">
-          <div class="grid md:grid-cols-2 gap-6">
-            <input type="text" name="name" placeholder="收件人姓名" required class="w-full px-5 py-4 rounded-2xl bg-white/50 border border-white outline-none">
-            <input type="tel" name="phone" placeholder="連絡電話" inputmode="tel" required class="w-full px-5 py-4 rounded-2xl bg-white/50 border border-white outline-none">
-          </div>
-          <input type="text" name="address" placeholder="收件地址" required class="w-full px-5 py-4 rounded-2xl bg-white/50 border border-white outline-none">
-
-          <!-- 💳 匯款資訊與 QR Code 區塊 (已更新) -->
-          <div class="bg-white/40 backdrop-blur-sm p-8 rounded-3xl border border-white">
-            <p class="font-serif text-pine-700 font-bold mb-6 text-center">💰 匯款資訊</p>
-            <div class="flex flex-col md:flex-row items-center gap-8">
-              <div class="w-32 h-32 bg-white p-2 rounded-xl shadow-inner border border-stone-100 flex-shrink-0">
-                <!-- 這裡請放你上傳的 bank_qr.jpg -->
-                <img src="bank_qr.jpg" alt="中信匯款 QR Code" class="w-full h-full object-contain">
-              </div>
-              <div class="flex-grow space-y-2 text-center md:text-left">
-                <p class="text-xs font-bold text-stone-400 uppercase tracking-widest">中國信託 (822)</p>
-                <p class="text-base text-pine-600 font-bold leading-relaxed">
-                  帳號：901620382731<br>
-                  分行：營業部 (0901)
-                </p>
-                <input type="text" name="bank_id" placeholder="請填寫匯款末五碼" required class="w-full mt-2 px-4 py-3 rounded-xl border-none shadow-sm outline-none text-sm">
-              </div>
+        <!-- 預購表單 -->
+        <form id="orderForm" class="space-y-6">
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
+                <div>
+                    <label class="block text-sm font-bold text-stone-600 ml-1">訂購人姓名</label>
+                    <input type="text" name="name" required class="input-style" placeholder="請填寫姓名">
+                </div>
+                <div>
+                    <label class="block text-sm font-bold text-stone-600 ml-1">聯絡電話</label>
+                    <input type="tel" name="phone" required class="input-style" placeholder="09xx-xxx-xxx">
+                </div>
             </div>
-          </div>
 
-          <textarea name="note" placeholder="備註 (選填)" rows="2" class="w-full px-5 py-4 rounded-2xl bg-white/50 border border-white outline-none"></textarea>
-          <button type="submit" id="submitBtn" class="submit-btn mt-4">確認送出預購單</button>
-        </div>
-      </div>
-    </form>
-  </div>
-</section>
+            <div>
+                <label class="block text-sm font-bold text-stone-600 ml-1">訂購規格</label>
+                <!-- 自訂下拉選單箭頭 -->
+                <select name="quantity" required class="input-style appearance-none bg-no-repeat bg-right" style="background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%231a4731%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'); background-size: 0.65rem auto; background-position: right 1rem center;">
+                    <option value="" disabled selected>請選擇預購規格</option>
+                    <option value="6粒裝特選箱">【頂級】6 粒裝特選箱</option>
+                    <option value="8粒裝精品箱">【優選】8 粒裝精品箱</option>
+                    <option value="10粒裝風味箱">【精選】10 粒裝風味箱</option>
+                </select>
+            </div>
 
-<!-- CONTACT -->
-<section id="contact" class="py-24 px-6 bg-blossom-50">
-  <div class="max-w-4xl mx-auto">
-    <div class="grid md:grid-cols-2 gap-16 items-center">
-      <div class="space-y-8">
-        <h2 class="font-serif text-4xl font-bold text-pine-700">與山林對話</h2>
-        <ul class="space-y-6">
-          <li class="flex items-center gap-4 text-stone-700">📍 <div><p class="text-xs font-bold text-stone-400">農場位置</p><p>桃園大雪山農場[cite: 1]</p></div></li>
-          <li class="flex items-center gap-4 text-stone-700">📞 <div><p class="text-xs font-bold text-stone-400">專線</p><p>049-123-4567[cite: 1]</p></div></li>
-          <li class="flex items-center gap-4 text-stone-700">📱 <div><p class="text-xs font-bold text-stone-400">LINE</p><p>@yamanosara[cite: 1]</p></div></li>
-        </ul>
-      </div>
-      <div class="bg-white p-10 rounded-[3rem] shadow-sm">
-        <h3 class="font-serif text-xl font-bold text-stone-700 mb-6">服務時間[cite: 1]</h3>
-        <p class="text-sm text-stone-500 leading-loose">
-          週一 ～ 週五 9:00 - 18:00<br>
-          週六 9:00 - 16:00 (限出貨)<br>
-          週日 公休[cite: 1]
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
+            <div>
+                <label class="block text-sm font-bold text-stone-600 ml-1">收件地址</label>
+                <input type="text" name="address" required class="input-style" placeholder="請輸入完整配送地址">
+            </div>
 
-<footer class="bg-white py-12 text-center text-stone-400 text-sm tracking-widest">
-  <p class="font-serif text-lg text-pine-700 mb-2">山之源桃園</p>
-  <p>© 2026 山之源桃園 All Rights Reserved[cite: 1]</p>
-</footer>
+            <!-- 匯款資訊區塊 -->
+            <div class="bg-[#fcf5f4] border border-peach-200 rounded-2xl p-6 sm:p-8 mt-8">
+                <h3 class="font-serif text-forest-800 font-bold mb-5 flex items-center gap-2">
+                    <span>💰</span> 預購匯款資訊
+                </h3>
+                <div class="flex flex-col sm:flex-row items-center gap-6">
+                    <!-- QR Code -->
+                    <div class="w-28 h-28 bg-white p-2 rounded-xl shadow-sm border border-peach-200 shrink-0">
+                        <img src="bank_qr.jpg" alt="匯款 QR Code" class="w-full h-full object-contain">
+                    </div>
+                    <!-- 帳號資訊 -->
+                    <div class="text-center sm:text-left">
+                        <p class="text-[11px] font-bold text-stone-400 uppercase tracking-widest mb-1">CTBC Bank (822)</p>
+                        <p class="text-xl sm:text-2xl font-bold text-forest-800 mb-1 tracking-wider">9016 2038 2731</p>
+                        <p class="text-sm text-stone-600">分行：營業部 (0901)</p>
+                    </div>
+                </div>
+                
+                <div class="mt-6 pt-6 border-t border-peach-200/50">
+                    <label class="block text-sm font-bold text-stone-600 ml-1">匯款確認</label>
+                    <input type="text" name="bank_id" required class="input-style bg-white" placeholder="請輸入您的匯款帳號末 5 碼">
+                </div>
+            </div>
 
-<script>
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbxUel6rxdJcctE-tclrThQWE3CfBsG3Egk3coi6Uf-ZTiaYk9s0cG3P8w8GO7nMHsGF/exec';
+            <!-- 送出按鈕 -->
+            <button type="submit" id="submitBtn" class="w-full bg-forest-800 hover:bg-forest-900 text-white font-serif font-bold text-lg py-4 rounded-xl shadow-lg transition duration-300 transform hover:-translate-y-1 mt-4">
+                確認送出預購單
+            </button>
+        </form>
+        
+        <footer class="mt-8 text-center">
+            <p class="text-xs text-stone-400 tracking-wider">© 2026 山之源桃園 版權所有</p>
+        </footer>
+    </main>
 
-    function calculate() {
-        const q8 = parseInt(document.getElementById('qty8').value) || 0;
-        const q6 = parseInt(document.getElementById('qty6').value) || 0;
-        const totalQty = q8 + q6;
-        const discount = Math.floor(totalQty / 2) * 100;
-        const finalAmount = (q8 * 750) + (q6 * 950) - discount;
-        document.getElementById('totalDisplay').innerText = `$${finalAmount.toLocaleString()}`;
-        document.getElementById('hiddenTotal').value = finalAmount;
-    }
-
-    const form = document.getElementById('orderForm');
-    form.addEventListener('submit', e => {
-        e.preventDefault();
+    <!-- Google Apps Script 串接 -->
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxUel6rxdJcctE-tclrThQWE3CfBsG3Egk3coi6Uf-ZTiaYk9s0cG3P8w8GO7nMHsGF/exec';
+        const form = document.getElementById('orderForm');
         const btn = document.getElementById('submitBtn');
-        if (document.getElementById('hiddenTotal').value <= 0) return alert('請先填寫訂購數量唷！');
-        btn.disabled = true;
-        btn.innerText = '正在傳遞山林的甜美...';
-        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-            .then(() => { alert('感謝預購！資料已送出。'); form.reset(); calculate(); btn.disabled = false; btn.innerText = '確認送出預購單'; })
-            .catch(() => { alert('發送失敗'); btn.disabled = false; });
-    });
-</script>
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            
+            // 按鈕狀態更改為處理中
+            btn.disabled = true;
+            btn.innerText = '正在傳遞山林的甜美...';
+            btn.classList.add('opacity-80', 'cursor-not-allowed');
+            
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => {
+                    alert('感謝您的預購！我們已收到您的資料，會盡快為您安排。');
+                    form.reset();
+                })
+                .catch(error => {
+                    alert('發送失敗，請檢查網路連線或稍後再試。');
+                })
+                .finally(() => {
+                    // 恢復按鈕狀態
+                    btn.disabled = false;
+                    btn.innerText = '確認送出預購單';
+                    btn.classList.remove('opacity-80', 'cursor-not-allowed');
+                });
+        });
+    </script>
 </body>
 </html>
