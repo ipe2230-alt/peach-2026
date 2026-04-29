@@ -45,7 +45,13 @@
   }
 
   .content { position: relative; z-index: 1; padding-bottom: 4rem; }
-
+.content { 
+  position: relative; 
+  z-index: 1; 
+  padding-bottom: 4rem; 
+  max-width: 600px; /* 電腦版寬度限制 */
+  margin: 0 auto;   /* 置中 */
+}
   /* Hero */
   .hero { padding: 3.8rem 1.5rem 2.2rem; text-align: center; }
   .brand-tag {
@@ -161,8 +167,12 @@
     margin-bottom: 0.7rem;
   }
   .spec-info { flex: 1; }
-  .spec-name { font-family: 'Noto Serif TC', serif; font-size: 0.92rem; color: #fff; font-weight: 500; margin-bottom: 0.18rem; }
-  .spec-price { font-size: 0.76rem; color: var(--blush-light); }
+  .spec-name { font-size: 1.1rem; font-weight: 600; } /* 品名放大 */
+.spec-price { 
+  font-size: 1.4rem; /* 金額放大 */
+  color: #ffb7b7;    /* 使用更亮的顏色 */
+  font-weight: bold;
+}
   .qty-ctrl { display: flex; align-items: center; gap: 0.55rem; }
   .qty-btn {
     width: 32px; height: 32px; border-radius: 50%;
