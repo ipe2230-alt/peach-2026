@@ -554,7 +554,7 @@ async function submitForm() {
   params.append('地址',     document.getElementById('f-addr').value.trim());               
   params.append('品項數量', `8粒x${qA}, 6粒x${qB}`);                                       
   params.append('總金額',   total);                                                        
-  params.append('匯款資訊', `末5碼: ${document.getElementById('f-bank5').value.trim()}`);    
+  params.append('匯款資訊',  document.getElementById('f-bank5').value.trim());    
 
   try {
     await fetch(SCRIPT_URL, {
