@@ -1,313 +1,646 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>大雪山職人農場 - 紅玉水蜜桃預購</title>
-  <style>
-    :root {
-      --primary-dark: #1a2e1a;
-      --gold: #c5a35d;
-      --bg-gray: #f4f4f2;
-      --white: #ffffff;
-      --text: #333;
-      --err: #d9534f;
-    }
-    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-    body {
-      margin: 0; padding: 0;
-      background-color: var(--bg-gray);
-      font-family: -apple-system, "Noto Sans TC", sans-serif;
-      color: var(--text);
-      line-height: 1.6;
-    }
-    .top-hero {
-      background: var(--primary-dark);
-      color: var(--white);
-      text-align: center;
-      padding: 40px 20px;
-      border-bottom: 5px solid var(--gold);
-    }
-    .top-hero h1 { margin: 0; font-size: 1.8rem; letter-spacing: 0.1em; }
-    .top-hero p { margin: 10px 0 0; opacity: 0.8; font-size: 0.9rem; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>桃之家 — 紅玉水蜜桃預購</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  :root {
+    --pine: #1a4a2e;
+    --pine-light: #2d6e47;
+    --blush: #e8a090;
+    --blush-light: #f2c4b8;
+    --cream: #fdf6ef;
+    --gold: #b8975a;
+    --gold-light: #d4b47a;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Noto Sans TC', sans-serif;
+    background: #0f2e1b;
+    color: var(--cream);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
 
-    .container { max-width: 500px; margin: 0 auto; padding: 20px; }
-    .card {
-      background: var(--white);
-      border-radius: 12px;
-      padding: 20px;
-      margin-bottom: 20px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    }
-    .sec-label {
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 20px;
-    }
-    .sec-line { height: 1px; flex: 1; background: #ddd; }
-    .sec-text { padding: 0 15px; font-weight: bold; color: var(--gold); letter-spacing: 0.1em; }
+  /* BG — use pseudo on body to avoid fixed jitter on iOS */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url('DSC05341.jpg');
+    background-size: cover;
+    background-position: center 30%;
+    z-index: 0;
+  }
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(160deg, rgba(8,24,14,0.75) 0%, rgba(15,40,22,0.62) 45%, rgba(20,50,30,0.72) 100%);
+    z-index: 0;
+  }
 
-    /* Product Specs */
-    .spec-item {
-      display: flex; align-items: center;
-      padding: 15px 0; border-bottom: 1px dashed #eee;
-    }
-    .spec-item:last-child { border-bottom: none; }
-    .spec-img { width: 80px; height: 80px; border-radius: 8px; object-fit: cover; margin-right: 15px; background: #eee; }
-    .spec-info { flex: 1; }
-    .spec-name { font-weight: bold; font-size: 1.1rem; }
-    .spec-price { color: #888; font-size: 0.9rem; }
-    
-    .qty-ctrl { display: flex; align-items: center; gap: 15px; }
-    .btn-q {
-      width: 32px; height: 32px; border-radius: 50%;
-      border: 1px solid #ccc; background: white;
-      font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center;
-    }
-    .qty-num { font-weight: bold; min-width: 20px; text-align: center; }
+  .content { position: relative; z-index: 1; padding-bottom: 4rem; }
 
-    /* Form Fields */
-    .f-group { margin-bottom: 15px; }
-    .f-label { display: block; margin-bottom: 6px; font-weight: bold; font-size: 0.9rem; }
-    .f-input {
-      width: 100%; padding: 12px; border: 1px solid #ddd;
-      border-radius: 8px; font-size: 1rem; outline: none;
-    }
-    .f-input:focus { border-color: var(--gold); }
-    .f-input.err { border-color: var(--err); background: #fff5f5; }
-    .f-err { color: var(--err); font-size: 0.8rem; margin-top: 4px; display: none; }
+  /* Hero */
+  .hero { padding: 3.8rem 1.5rem 2.2rem; text-align: center; }
+  .brand-tag {
+    display: inline-block;
+    border: 1px solid rgba(184,151,90,0.45);
+    color: var(--gold-light);
+    font-family: 'Noto Serif TC', serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.4em;
+    padding: 0.35rem 1.3rem;
+    border-radius: 100px;
+    margin-bottom: 1.8rem;
+    background: rgba(184,151,90,0.07);
+  }
+  .hero-title {
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 600;
+    font-size: clamp(2.8rem, 12vw, 4.2rem);
+    letter-spacing: 0.15em;
+    color: #fff;
+    text-shadow: 0 2px 30px rgba(0,0,0,0.5);
+    margin-bottom: 0.5rem;
+    line-height: 1.1;
+  }
+  .hero-en {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 0.7rem;
+    color: var(--gold);
+    letter-spacing: 0.35em;
+    margin-bottom: 1.8rem;
+    opacity: 0.8;
+  }
+  .hero-divider {
+    width: 36px; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 0 auto 1.8rem;
+  }
+  .hero-desc {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 0.85rem;
+    line-height: 2.2;
+    color: rgba(253,246,239,0.78);
+    max-width: 340px;
+    margin: 0 auto;
+    text-shadow: 0 1px 8px rgba(0,0,0,0.6);
+  }
 
-    /* Bank Table */
-    .bank-table { background: #f9f9f7; padding: 15px; border-radius: 8px; margin-top: 10px; }
-    .b-row { display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 0.9rem; }
-    .b-key { color: #666; }
-    .b-val { font-weight: bold; }
+  /* Cards */
+  .card {
+    background: rgba(12,35,20,0.58);
+    border: 1px solid rgba(184,151,90,0.25);
+    border-radius: 20px;
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
+    padding: 1.8rem 1.4rem;
+    margin: 0 1rem 1.2rem;
+  }
 
-    /* Footer Summary */
-    .footer-bar {
-      position: fixed; bottom: 0; left: 0; right: 0;
-      background: var(--white); padding: 15px 20px;
-      box-shadow: 0 -4px 15px rgba(0,0,0,0.1);
-      display: flex; align-items: center; justify-content: space-between;
-      z-index: 100;
-    }
-    .total-price { font-size: 1.4rem; font-weight: bold; color: var(--primary-dark); }
-    .btn-submit {
-      background: var(--primary-dark); color: var(--white);
-      border: none; padding: 12px 30px; border-radius: 30px;
-      font-weight: bold; font-size: 1rem; cursor: pointer;
-    }
-    .btn-submit:disabled { background: #ccc; }
+  /* Section label */
+  .sec-label {
+    display: flex; align-items: center; gap: 0.8rem;
+    margin-bottom: 1.5rem;
+  }
+  .sec-line { flex:1; height:1px; background: linear-gradient(90deg, rgba(184,151,90,0.5), transparent); }
+  .sec-line-r { flex:1; height:1px; background: linear-gradient(90deg, transparent, rgba(184,151,90,0.5)); }
+  .sec-text {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.32em;
+    color: var(--gold-light);
+    white-space: nowrap;
+  }
 
-    /* Loading Overlay */
-    #loading {
-      display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(255,255,255,0.9); z-index: 200;
-      flex-direction: column; align-items: center; justify-content: center;
-    }
-    .spinner {
-      width: 40px; height: 40px; border: 4px solid #f3f3f3;
-      border-top: 4px solid var(--gold); border-radius: 50%;
-      animation: spin 1s linear infinite;
-    }
-    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-  </style>
+  /* Form */
+  .f-group { margin-bottom: 1rem; }
+  .f-label {
+    display: block;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    color: var(--gold-light);
+    margin-bottom: 0.42rem;
+    font-family: 'Noto Serif TC', serif;
+  }
+  .f-input {
+    width: 100%;
+    background: rgba(253,246,239,0.07);
+    border: 1px solid rgba(184,151,90,0.28);
+    border-radius: 10px;
+    padding: 0.78rem 1rem;
+    color: #fff;
+    font-size: 0.9rem;
+    font-family: 'Noto Sans TC', sans-serif;
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  .f-input::placeholder { color: rgba(253,246,239,0.28); }
+  .f-input:focus {
+    border-color: rgba(184,151,90,0.65);
+    background: rgba(253,246,239,0.11);
+  }
+  .f-input.err { border-color: rgba(248,113,113,0.65); }
+  .f-err { font-size: 0.7rem; color: #fca5a5; margin-top: 0.3rem; display: none; }
+
+  /* Spec rows */
+  .spec-row {
+    display: flex; align-items: center; gap: 0.8rem;
+    background: rgba(253,246,239,0.04);
+    border: 1px solid rgba(184,151,90,0.18);
+    border-radius: 12px;
+    padding: 0.9rem 1rem;
+    margin-bottom: 0.7rem;
+  }
+  .spec-info { flex: 1; }
+  .spec-name { font-family: 'Noto Serif TC', serif; font-size: 0.92rem; color: #fff; font-weight: 500; margin-bottom: 0.18rem; }
+  .spec-price { font-size: 0.76rem; color: var(--blush-light); }
+  .qty-ctrl { display: flex; align-items: center; gap: 0.55rem; }
+  .qty-btn {
+    width: 32px; height: 32px; border-radius: 50%;
+    border: 1px solid rgba(184,151,90,0.45);
+    background: rgba(184,151,90,0.1);
+    color: var(--gold-light);
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.15s;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+  }
+  .qty-btn:active { background: rgba(184,151,90,0.28); }
+  .qty-num { font-family: 'Noto Serif TC', serif; font-size: 1.05rem; color: #fff; width: 26px; text-align: center; font-weight: 500; }
+
+  /* Price summary */
+  .price-box {
+    background: rgba(232,160,144,0.07);
+    border: 1px solid rgba(232,160,144,0.18);
+    border-radius: 12px;
+    padding: 1rem 1.1rem;
+    margin-top: 0.5rem;
+  }
+  .disc-tag {
+    display: inline-flex; align-items: center; gap: 0.3rem;
+    background: rgba(232,160,144,0.13);
+    border: 1px solid rgba(232,160,144,0.3);
+    border-radius: 100px;
+    padding: 0.22rem 0.75rem;
+    font-size: 0.69rem;
+    color: var(--blush-light);
+    margin-bottom: 0.75rem;
+  }
+  .p-row {
+    display: flex; justify-content: space-between;
+    font-size: 0.82rem; color: rgba(253,246,239,0.65);
+    margin-bottom: 0.45rem;
+  }
+  .p-row.total {
+    border-top: 1px solid rgba(184,151,90,0.22);
+    padding-top: 0.6rem; margin-top: 0.4rem;
+    color: #fff;
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1.02rem; font-weight: 600;
+  }
+  .p-total-val { color: var(--gold-light); font-size: 1.15rem; }
+
+  /* Spec photo */
+  .spec-photo {
+    width: 64px; height: 64px;
+    border-radius: 10px;
+    object-fit: cover;
+    flex-shrink: 0;
+    border: 1px solid rgba(184,151,90,0.25);
+  }
+
+  /* Numpad */
+  .numpad-display {
+    background: rgba(253,246,239,0.07);
+    border: 1px solid rgba(184,151,90,0.28);
+    border-radius: 10px;
+    padding: 0.85rem 1rem;
+    margin-bottom: 0.8rem;
+    text-align: center;
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1.4rem;
+    letter-spacing: 0.35em;
+    color: #fff;
+    min-height: 52px;
+    transition: border-color 0.2s;
+  }
+  .numpad-display.filled { border-color: rgba(184,151,90,0.65); }
+  .numpad-display.err-border { border-color: rgba(248,113,113,0.65); }
+  .numpad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.55rem;
+  }
+  .np-btn {
+    background: rgba(253,246,239,0.07);
+    border: 1px solid rgba(184,151,90,0.22);
+    border-radius: 10px;
+    padding: 0.9rem 0;
+    color: #fff;
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.12s;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+  }
+  .np-btn:active { background: rgba(184,151,90,0.25); }
+  .np-clear { font-size: 0.75rem; color: rgba(253,246,239,0.5); letter-spacing: 0.05em; }
+  .np-del { font-size: 1rem; }
+
+  /* Bank */
+  .bank-qr-wrap { text-align: center; margin-bottom: 1.2rem; }
+  .bank-qr {
+    width: 128px; height: 128px;
+    border-radius: 12px; object-fit: cover;
+    border: 2px solid rgba(184,151,90,0.28);
+    display: inline-block;
+    background: rgba(255,255,255,0.04);
+  }
+  .qr-ph {
+    width: 128px; height: 128px;
+    border-radius: 12px;
+    border: 2px dashed rgba(184,151,90,0.35);
+    display: inline-flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 0.4rem;
+    color: rgba(184,151,90,0.45); font-size: 0.68rem;
+  }
+  .bank-table { background: rgba(184,151,90,0.05); border-radius: 11px; overflow: hidden; margin-bottom: 1.2rem; }
+  .b-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0.58rem 1rem;
+    border-bottom: 1px solid rgba(184,151,90,0.09);
+    font-size: 0.82rem;
+  }
+  .b-row:last-child { border-bottom: none; }
+  .b-key { color: var(--gold-light); font-size: 0.72rem; letter-spacing: 0.08em; }
+  .b-val { color: #fff; font-weight: 500; }
+
+  /* Submit */
+  .submit-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #2d6e47, #1a4a2e);
+    border: 1px solid rgba(184,151,90,0.38);
+    border-radius: 100px;
+    padding: 1.05rem 2rem;
+    color: #fff;
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    cursor: pointer;
+    box-shadow: 0 4px 28px rgba(0,0,0,0.35);
+    transition: transform 0.15s, opacity 0.15s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .submit-btn:active { transform: scale(0.98); }
+  .submit-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+  /* Success */
+  .success-box {
+    text-align: center; padding: 2.2rem 1rem;
+    background: rgba(12,35,20,0.58);
+    border: 1px solid rgba(184,151,90,0.25);
+    border-radius: 20px;
+    backdrop-filter: blur(22px);
+    margin: 0 1rem 1.2rem;
+  }
+  .success-icon { font-size: 2.8rem; margin-bottom: 1rem; }
+  .success-title { font-family: 'Noto Serif TC', serif; font-size: 1.15rem; color: var(--gold-light); margin-bottom: 0.65rem; letter-spacing: 0.1em; }
+  .success-msg { font-size: 0.83rem; color: rgba(253,246,239,0.65); line-height: 1.9; }
+
+  .note-txt { font-size: 0.72rem; color: rgba(253,246,239,0.38); line-height: 1.9; padding: 0 1.5rem; text-align: center; }
+
+  /* Animations */
+  @keyframes fadeUp { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
+  .a1 { animation: fadeUp 0.75s ease both; }
+  .a2 { animation: fadeUp 0.75s 0.1s ease both; }
+  .a3 { animation: fadeUp 0.75s 0.2s ease both; }
+  .a4 { animation: fadeUp 0.75s 0.3s ease both; }
+  .a5 { animation: fadeUp 0.75s 0.4s ease both; }
+</style>
 </head>
 <body>
+<div class="content">
 
-<div id="loading">
-  <div class="spinner"></div>
-  <p>訂單處理中，請稍候...</p>
+  <!-- HERO -->
+  <div class="hero a1">
+    <div class="brand-tag">桃 之 家　TAOZHIJIA</div>
+    <h1 class="hero-title">紅玉水蜜桃</h1>
+    <p class="hero-en">RED JADE PEACH　預 購</p>
+    <div class="hero-divider"></div>
+    <p class="hero-desc">每一顆水蜜桃，都承載著大雪山冷冽清晨的露水，與父親守護土地的溫度。我們堅持職人栽培，將這份純淨甜美由產地直達到您的手中。</p>
+  </div>
+
+  <!-- ① ORDER SPEC -->
+  <div class="card a2">
+    <div class="sec-label">
+      <div class="sec-line"></div><span class="sec-text">選 擇 規 格</span><div class="sec-line-r"></div>
+    </div>
+
+    <!-- Spec A: 8粒 -->
+    <div class="spec-row">
+      <img src="DSC05394.jpg" alt="8粒裝" class="spec-photo"
+        onerror="this.style.display='none'">
+      <div class="spec-info">
+        <div class="spec-name">8 粒裝禮盒</div>
+        <div class="spec-price">每盒 $750</div>
+      </div>
+      <div class="qty-ctrl">
+        <button class="qty-btn" onclick="changeQty('a',-1)">−</button>
+        <div class="qty-num" id="qa">0</div>
+        <button class="qty-btn" onclick="changeQty('a',1)">＋</button>
+      </div>
+    </div>
+
+    <!-- Spec B: 6粒 -->
+    <div class="spec-row">
+      <img src="DSC05379.jpg" alt="6粒裝" class="spec-photo"
+        onerror="this.style.display='none'">
+      <div class="spec-info">
+        <div class="spec-name">6 粒裝禮盒</div>
+        <div class="spec-price">每盒 $950</div>
+      </div>
+      <div class="qty-ctrl">
+        <button class="qty-btn" onclick="changeQty('b',-1)">−</button>
+        <div class="qty-num" id="qb">0</div>
+        <button class="qty-btn" onclick="changeQty('b',1)">＋</button>
+      </div>
+    </div>
+
+    <div class="f-err" id="e-qty" style="margin-top:0.4rem;">請至少選擇一盒</div>
+
+    <div class="price-box" id="price-box" style="display:none;">
+      <div class="disc-tag" id="disc-tag" style="display:none;">
+        <span>🎉</span><span id="disc-txt"></span>
+      </div>
+      <div class="p-row"><span>8 粒裝 × <span id="sp-qa">0</span> 盒</span><span id="sp-pa">$0</span></div>
+      <div class="p-row"><span>6 粒裝 × <span id="sp-qb">0</span> 盒</span><span id="sp-pb">$0</span></div>
+      <div class="p-row" id="disc-row" style="display:none;">
+        <span style="color:var(--blush-light)">雙數折扣</span>
+        <span style="color:var(--blush-light)" id="sp-disc"></span>
+      </div>
+      <div class="p-row total">
+        <span>合 計 金 額</span>
+        <span class="p-total-val" id="sp-total">$0</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ② BUYER INFO -->
+  <div class="card a3">
+    <div class="sec-label">
+      <div class="sec-line"></div><span class="sec-text">訂 購 人 資 訊</span><div class="sec-line-r"></div>
+    </div>
+    <div class="f-group">
+      <label class="f-label">姓　　名</label>
+      <input id="f-name" class="f-input" type="text" placeholder="請輸入您的姓名" autocomplete="name">
+      <div class="f-err" id="e-name">請填寫姓名（至少 2 字）</div>
+    </div>
+    <div class="f-group">
+      <label class="f-label">聯絡電話</label>
+      <input id="f-phone" class="f-input" type="tel" placeholder="請輸入手機號碼" autocomplete="tel">
+      <div class="f-err" id="e-phone">請填寫有效電話號碼</div>
+    </div>
+    <div class="f-group" style="margin-bottom:0">
+      <label class="f-label">收件地址</label>
+      <input id="f-addr" class="f-input" type="text" placeholder="縣市 + 完整地址" autocomplete="street-address">
+      <div class="f-err" id="e-addr">請填寫完整收件地址</div>
+    </div>
+  </div>
+
+  <!-- ③ PAYMENT -->
+  <div class="card a4">
+    <div class="sec-label">
+      <div class="sec-line"></div><span class="sec-text">匯 款 資 訊</span><div class="sec-line-r"></div>
+    </div>
+
+    <div class="bank-qr-wrap">
+      <img src="bank_qr.jpg" alt="QR Code" class="bank-qr"
+        onerror="this.style.display='none';document.getElementById('qrph').style.display='inline-flex';">
+      <div id="qrph" class="qr-ph" style="display:none;">
+        <span style="font-size:2rem;">📷</span>
+        <span>bank_qr.jpg</span>
+      </div>
+    </div>
+
+    <div class="bank-table">
+      <div class="b-row"><span class="b-key">銀　　行</span><span class="b-val">中國信託 (822)</span></div>
+      <div class="b-row"><span class="b-key">分　　行</span><span class="b-val">營業部 (0901)</span></div>
+      <div class="b-row"><span class="b-key">帳　　號</span><span class="b-val" style="font-size:0.95rem;letter-spacing:0.08em;">901620382731</span></div>
+    </div>
+
+    <!-- 末5碼 + 九宮格鍵盤 -->
+    <div class="f-group" style="margin-bottom:0">
+    <label class="f-label">匯款帳號末 5 碼</label>
+    <input 
+      id="f-bank5" 
+      class="f-input" 
+      type="tel" 
+      pattern="\d{5}" 
+      inputmode="numeric" 
+      maxlength="5" 
+      placeholder="請輸入 5 位數字"
+      oninput="this.value=this.value.replace(/[^\d]/g,'')"
+    >
+    <div class="f-err" id="e-bank5">請填寫匯款帳號末 5 碼（5 位數字）</div>
+  </div>
 </div>
 
-<div class="top-hero">
-  <h1>大雪山職人農場</h1>
-  <p>極致高山・紅玉水蜜桃預購單</p>
-</div>
+  <!-- SUCCESS -->
+  <div class="success-box a5" id="success-box" style="display:none;">
+    <div class="success-icon">🍑</div>
+    <div class="success-title">預購成功，感謝您！</div>
+    <div class="success-msg">我們已收到您的訂單，<br>將盡快與您確認出貨資訊。<br><br>如有疑問請聯繫桃之家客服。</div>
+  </div>
 
-<div class="container" style="padding-bottom: 100px;">
-  <!-- ① 商品選擇 -->
-  <div class="card">
-    <div class="sec-label">
-      <div class="sec-line"></div><span class="sec-text">訂 購 規 格</span><div class="sec-line"></div>
-    </div>
-    
-    <div class="spec-item">
-      <img src="DSC05394.jpg" class="spec-img" alt="8粒">
-      <div class="spec-info">
-        <div class="spec-name">紅玉水蜜桃 (8粒裝)</div>
-        <div class="spec-price">NT$ 750 / 盒</div>
-      </div>
-      <div class="qty-ctrl">
-        <button class="btn-q" onclick="updateQty('qA', -1)">-</button>
-        <span id="qA" class="qty-num">0</span>
-        <button class="btn-q" onclick="updateQty('qA', 1)">+</button>
-      </div>
-    </div>
+  <!-- SUBMIT -->
+  <div class="a5" style="padding:0 1rem; margin-bottom:1rem;">
+    <button class="submit-btn" id="submit-btn" onclick="submitForm()">確 認 送 出 預 購</button>
+    <div id="loading-msg" style="display:none;text-align:center;padding:0.9rem;font-size:0.82rem;color:rgba(253,246,239,0.5);letter-spacing:0.12em;">送出中，請稍候⋯</div>
+  </div>
 
-    <div class="spec-item">
-      <img src="DSC05379.jpg" class="spec-img" alt="6粒">
-      <div class="spec-info">
-        <div class="spec-name">紅玉水蜜桃 (6粒裝)</div>
-        <div class="spec-price">NT$ 950 / 盒</div>
-      </div>
-      <div class="qty-ctrl">
-        <button class="btn-q" onclick="updateQty('qB', -1)">-</button>
-        <span id="qB" class="qty-num">0</span>
-        <button class="btn-q" onclick="updateQty('qB', 1)">+</button>
-      </div>
-    </div>
-    <div class="f-err" id="e-qty" style="text-align:center; margin-top:10px;">請至少選擇一盒水蜜桃</div>
-  </div>
+  <p class="note-txt a5">桃之家　大雪山職人栽培<br>本頁面採用加密傳輸保護您的個人資料</p>
 
-  <!-- ② 收件資訊 -->
-  <div class="card">
-    <div class="sec-label">
-      <div class="sec-line"></div><span class="sec-text">收 件 資 訊</span><div class="sec-line"></div>
-    </div>
-    <div class="f-group">
-      <label class="f-label">姓名</label>
-      <input id="f-name" class="f-input" type="text" placeholder="收件人真實姓名">
-      <div class="f-err" id="e-name">請填寫完整的收件人姓名</div>
-    </div>
-    <div class="f-group">
-      <label class="f-label">電話</label>
-      <input id="f-phone" class="f-input" type="tel" placeholder="範例：0912345678">
-      <div class="f-err" id="e-phone">請填寫正確的電話號碼</div>
-    </div>
-    <div class="f-group">
-      <label class="f-label">收件地址</label>
-      <input id="f-addr" class="f-input" type="text" placeholder="請完整填寫縣市與街道門牌">
-      <div class="f-err" id="e-addr">請填寫完整收件地址</div>
-    </div>
-  </div>
-
-  <!-- ③ 匯款資訊 -->
-  <div class="card">
-    <div class="sec-label">
-      <div class="sec-line"></div><span class="sec-text">匯 款 確 認</span><div class="sec-line"></div>
-    </div>
-    <div class="bank-table">
-      <div class="b-row"><span class="b-key">銀行</span><span class="b-val">中國信託 (822)</span></div>
-      <div class="b-row"><span class="b-key">帳號</span><span class="b-val">901620382731</span></div>
-      <div class="b-row" style="color:var(--err); margin-top:10px; font-weight:bold;">
-        ※ 請確認金額後再匯款，並填寫末5碼
-      </div>
-    </div>
-    <div class="f-group" style="margin-top:15px;">
-      <label class="f-label">匯款帳號末 5 碼</label>
-      <input 
-        id="f-bank5" 
-        class="f-input" 
-        type="tel" 
-        pattern="\d*" 
-        inputmode="numeric" 
-        maxlength="5" 
-        placeholder="請輸入 5 位數字"
-        oninput="this.value=this.value.replace(/[^\d]/g,'')"
-      >
-      <div class="f-err" id="e-bank5">請填寫 5 位匯款末碼</div>
-    </div>
-  </div>
-</div>
-
-<div class="footer-bar">
-  <div>
-    <div style="font-size:0.8rem; color:#888;">合計金額 <span id="summary-text" style="color:var(--err);">(雙數折$100)</span></div>
-    <div class="total-price">NT$ <span id="total-val">0</span></div>
-  </div>
-  <button class="btn-submit" onclick="submitForm()">送出訂單</button>
 </div>
 
 <script>
-  // ⚠️ 請修改此處為你的 Google Apps Script 網址
-  const SCRIPT_URL = '請貼入你的部署網址';
+let qA = 0, qB = 0;
+const pA = 750, pB = 950;
 
-  let qA = 0; // 8粒
-  let qB = 0; // 6粒
-  const PRICE_A = 750;
-  const PRICE_B = 950;
+// ── Qty ──
+function changeQty(s, d) {
+  if (s === 'a') { qA = Math.max(0, qA + d); document.getElementById('qa').textContent = qA; }
+  else           { qB = Math.max(0, qB + d); document.getElementById('qb').textContent = qB; }
+  updatePrice();
+  document.getElementById('e-qty').style.display = 'none';
+}
 
-  function updateQty(id, delta) {
-    if (id === 'qA') qA = Math.max(0, qA + delta);
-    if (id === 'qB') qB = Math.max(0, qB + delta);
-    document.getElementById('qA').innerText = qA;
-    document.getElementById('qB').innerText = qB;
-    calc();
-  }
+function updatePrice() {
+  const total = qA + qB;
+  const raw   = qA * pA + qB * pB;
+  const pairs = Math.floor(total / 2);
+  const disc  = pairs * 100;
+  const final = raw - disc;
 
-  function calc() {
-    const rawTotal = (qA * PRICE_A) + (qB * PRICE_B);
-    const totalBox = qA + qB;
-    // 每兩盒折 100
-    const discount = Math.floor(totalBox / 2) * 100;
-    const finalTotal = rawTotal - discount;
-    
-    document.getElementById('total-val').innerText = finalTotal.toLocaleString();
-    document.getElementById('e-qty').style.display = 'none';
-    return { qA, qB, discount, finalTotal };
-  }
+  document.getElementById('sp-qa').textContent = qA;
+  document.getElementById('sp-qb').textContent = qB;
+  document.getElementById('sp-pa').textContent = '$' + (qA * pA).toLocaleString();
+  document.getElementById('sp-pb').textContent = '$' + (qB * pB).toLocaleString();
+  document.getElementById('sp-total').textContent = '$' + (total > 0 ? final.toLocaleString() : '0');
 
-  function validate() {
-    let isValid = true;
-    
-    const vName = document.getElementById('f-name').value.trim();
-    const vPhone = document.getElementById('f-phone').value.trim();
-    const vAddr = document.getElementById('f-addr').value.trim();
-    const vBank = document.getElementById('f-bank5').value.trim();
+  const discTag = document.getElementById('disc-tag');
+  const discRow = document.getElementById('disc-row');
+  if (disc > 0) {
+    discTag.style.display = 'inline-flex';
+    document.getElementById('disc-txt').textContent = `合計 ${total} 盒，折抵 $${disc.toLocaleString()}`;
+    discRow.style.display = 'flex';
+    document.getElementById('sp-disc').textContent = '-$' + disc.toLocaleString();
+  } else {
+    discTag.style.display = 'none';
+    discRow.style.display = 'none';
+  }
+  document.getElementById('price-box').style.display = total > 0 ? 'block' : 'none';
+}
 
-    if (vName.length < 2) { document.getElementById('e-name').style.display='block'; isValid=false; }
-    else { document.getElementById('e-name').style.display='none'; }
+// ── Numpad ──
+let bank5Val = '';
 
-    if (vPhone.length < 8) { document.getElementById('e-phone').style.display='block'; isValid=false; }
-    else { document.getElementById('e-phone').style.display='none'; }
+function npInput(n) {
+  if (bank5Val.length >= 5) return;
+  bank5Val += n;
+  updateBank5Display();
+}
+function npDel() {
+  bank5Val = bank5Val.slice(0, -1);
+  updateBank5Display();
+}
+function npClear() {
+  bank5Val = '';
+  updateBank5Display();
+}
+function updateBank5Display() {
+  document.getElementById('f-bank5').value = bank5Val;
+  const display = document.getElementById('bank5-display');
+  const dots = document.getElementById('bank5-dots');
+  // Show filled digits + remaining underscores
+  let shown = '';
+  for (let i = 0; i < 5; i++) {
+    shown += i < bank5Val.length ? bank5Val[i] : '_';
+    if (i < 4) shown += ' ';
+  }
+  dots.textContent = shown;
+  display.classList.toggle('filled', bank5Val.length === 5);
+  display.classList.remove('err-border');
+  document.getElementById('e-bank5').style.display = 'none';
+}
 
-    if (vAddr.length < 5) { document.getElementById('e-addr').style.display='block'; isValid=false; }
-    else { document.getElementById('e-addr').style.display='none'; }
+// ── Validation ──
+function chk(id, errId, fn) {
+  const el  = document.getElementById(id);
+  const val = el.value !== undefined ? el.value : '';
+  const ok  = fn(val);
+  const err = document.getElementById(errId);
+  if (el.classList) el.classList.toggle('err', !ok);
+  err.style.display = ok ? 'none' : 'block';
+  return ok;
+}
 
-    if (vBank.length !== 5) { document.getElementById('e-bank5').style.display='block'; isValid=false; }
-    else { document.getElementById('e-bank5').style.display='none'; }
+function validate() {
+  let ok = true;
+  ok = chk('f-name',  'e-name',  v => v.trim().length >= 2)  && ok;
+  ok = chk('f-phone', 'e-phone', v => /^[\d\-\+\s]{8,}$/.test(v.trim())) && ok;
+  ok = chk('f-addr',  'e-addr',  v => v.trim().length >= 5)  && ok;
 
-    if (qA + qB === 0) { document.getElementById('e-qty').style.display='block'; isValid=false; }
+  // bank5 is hidden input — validate separately
+  const b5ok = /^\d{5}$/.test(bank5Val);
+  if (!b5ok) {
+    document.getElementById('bank5-display').classList.add('err-border');
+    document.getElementById('e-bank5').style.display = 'block';
+    ok = false;
+  }
 
-    return isValid;
-  }
+  if (qA + qB < 1) {
+    document.getElementById('e-qty').style.display = 'block';
+    ok = false;
+  }
+  return ok;
+}
 
-  async function submitForm() {
-    if (!validate()) return;
+// ── Google Sheets Submit ──
+// Google Apps Script requires no-cors mode; response will be opaque but data arrives correctly.
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxUel6rxdJcctE-tclrThQWE3CfBsG3Egk3coi6Uf-ZTiaYk9s0cG3P8w8GO7nMHsGF/exec';
 
-    const loader = document.getElementById('loading');
-    loader.style.display = 'flex';
+async function submitForm() {
+  if (!validate()) {
+    // Scroll to first visible error
+    const firstErr = document.querySelector('.f-err[style*="block"], #e-qty[style*="block"]');
+    if (firstErr) firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return;
+  }
 
-    const { qA, qB, discount, finalTotal } = calc();
-    const params = new URLSearchParams();
-    params.append('時間', new Date().toLocaleString());
-    params.append('姓名', document.getElementById('f-name').value);
-    params.append('電話', document.getElementById('f-phone').value);
-    params.append('地址', document.getElementById('f-addr').value);
-    params.append('8粒裝數量', qA);
-    params.append('6粒裝數量', qB);
-    params.append('折扣金額', discount);
-    params.append('合計金額', finalTotal);
-    params.append('匯款末5碼', document.getElementById('f-bank5').value);
+  const btn     = document.getElementById('submit-btn');
+  const loading = document.getElementById('loading-msg');
+  btn.disabled = true; btn.style.display = 'none'; loading.style.display = 'block';
 
-    try {
-      // 使用 no-cors 避免跨網域失敗問題
-      await fetch(SCRIPT_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: params.toString()
-      });
-      
-      alert('訂單已成功送出！請確認已完成匯款。');
-      location.reload(); // 成功後重整
-    } catch (e) {
-      alert('送出失敗，請檢查網路連線或稍後再試。');
-    } finally {
-      loader.style.display = 'none';
-    }
-  }
+  const disc  = Math.floor((qA + qB) / 2) * 100;
+  const total = qA * pA + qB * pB - disc;
+
+  // Build URL-encoded string — most reliable method for Google Apps Script doPost
+  const params = new URLSearchParams();
+  params.append('姓名',      document.getElementById('f-name').value.trim());
+  params.append('電話',      document.getElementById('f-phone').value.trim());
+  params.append('地址',      document.getElementById('f-addr').value.trim());
+  params.append('8粒裝數量', qA);
+  params.append('6粒裝數量', qB);
+  params.append('折扣金額',  disc);
+  params.append('合計金額',  total);
+  params.append('匯款末5碼', bank5Val);
+  params.append('時間',      new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' }));
+
+  try {
+    // mode:'no-cors' is required for Google Apps Script cross-origin POST
+    await fetch(SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: params.toString()
+    });
+    // With no-cors the response is always opaque; we assume success if no network error
+    loading.style.display = 'none';
+    btn.style.display = 'none';
+    const box = document.getElementById('success-box');
+    box.style.display = 'block';
+    box.scrollIntoView({ behavior: 'smooth' });
+  } catch (e) {
+    loading.style.display = 'none';
+    btn.style.display = 'block'; btn.disabled = false;
+    alert('送出失敗，請確認網路連線後再試一次。');
+  }
+}
+
+// Clear errors on text input
+['f-name','f-phone','f-addr'].forEach(id => {
+  document.getElementById(id).addEventListener('input', function() {
+    this.classList.remove('err');
+    const key = id.replace('f-','');
+    const err = document.getElementById('e-' + key);
+    if (err) err.style.display = 'none';
+  });
+});
 </script>
-
 </body>
 </html>
