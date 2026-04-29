@@ -2,7 +2,7 @@
 <html lang="zh-TW">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>桃之家 — 紅玉水蜜桃預購</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
@@ -44,14 +44,15 @@
     z-index: 0;
   }
 
-  .content { position: relative; z-index: 1; padding-bottom: 4rem; }
-.content { 
-  position: relative; 
-  z-index: 1; 
-  padding-bottom: 4rem; 
-  max-width: 600px; /* 電腦版寬度限制 */
-  margin: 0 auto;   /* 置中 */
-}
+  /* 電腦版版面置中 */
+  .content { 
+    position: relative; 
+    z-index: 1; 
+    padding-bottom: 4rem; 
+    max-width: 600px; 
+    margin: 0 auto;   
+  }
+
   /* Hero */
   .hero { padding: 3.8rem 1.5rem 2.2rem; text-align: center; }
   .brand-tag {
@@ -167,12 +168,15 @@
     margin-bottom: 0.7rem;
   }
   .spec-info { flex: 1; }
-  .spec-name { font-size: 1.1rem; font-weight: 600; } /* 品名放大 */
-.spec-price { 
-  font-size: 1.4rem; /* 金額放大 */
-  color: #ffb7b7;    /* 使用更亮的顏色 */
-  font-weight: bold;
-}
+  
+  /* 規格品名與金額放大強調 */
+  .spec-name { font-size: 1.1rem; font-weight: 600; } 
+  .spec-price { 
+    font-size: 1.4rem; 
+    color: #ffb7b7;    
+    font-weight: bold;
+  }
+  
   .qty-ctrl { display: flex; align-items: center; gap: 0.55rem; }
   .qty-btn {
     width: 32px; height: 32px; border-radius: 50%;
@@ -230,7 +234,6 @@
     border: 1px solid rgba(184,151,90,0.25);
   }
 
-  
   /* Bank */
   .bank-qr-wrap { text-align: center; margin-bottom: 1.2rem; }
   .bank-qr {
@@ -324,31 +327,29 @@
 
     <!-- Spec A: 8粒 -->
     <div class="spec-row">
-      <img src="DSC05394.jpg" alt="8粒裝" class="spec-photo"
-        onerror="this.style.display='none'">
+      <img src="DSC05394.jpg" alt="8粒裝" class="spec-photo" onerror="this.style.display='none'">
       <div class="spec-info">
         <div class="spec-name">8 粒裝禮盒</div>
         <div class="spec-price">每盒 $750</div>
       </div>
       <div class="qty-ctrl">
-        <button class="qty-btn" onclick="changeQty('a',-1)">−</button>
+        <button type="button" class="qty-btn" onclick="changeQty('a',-1)">−</button>
         <div class="qty-num" id="qa">0</div>
-        <button class="qty-btn" onclick="changeQty('a',1)">＋</button>
+        <button type="button" class="qty-btn" onclick="changeQty('a',1)">＋</button>
       </div>
     </div>
 
     <!-- Spec B: 6粒 -->
     <div class="spec-row">
-      <img src="DSC05379.jpg" alt="6粒裝" class="spec-photo"
-        onerror="this.style.display='none'">
+      <img src="DSC05379.jpg" alt="6粒裝" class="spec-photo" onerror="this.style.display='none'">
       <div class="spec-info">
         <div class="spec-name">6 粒裝禮盒</div>
         <div class="spec-price">每盒 $950</div>
       </div>
       <div class="qty-ctrl">
-        <button class="qty-btn" onclick="changeQty('b',-1)">−</button>
+        <button type="button" class="qty-btn" onclick="changeQty('b',-1)">−</button>
         <div class="qty-num" id="qb">0</div>
-        <button class="qty-btn" onclick="changeQty('b',1)">＋</button>
+        <button type="button" class="qty-btn" onclick="changeQty('b',1)">＋</button>
       </div>
     </div>
 
@@ -414,22 +415,21 @@
       <div class="b-row"><span class="b-key">帳　　號</span><span class="b-val" style="font-size:0.95rem;letter-spacing:0.08em;">901620382731</span></div>
     </div>
 
-    <!-- 修改後的輸入框：移除了手寫九宮格，改用系統鍵盤 -->
-  <div class="f-group" style="margin-bottom:0">
-    <label class="f-label">匯款帳號末 5 碼</label>
-    <input 
-      id="f-bank5" 
-      class="f-input" 
-      type="tel" 
-      pattern="\d{5}" 
-      inputmode="numeric" 
-      maxlength="5" 
-      placeholder="請輸入 5 位數字"
-      oninput="this.value=this.value.replace(/[^\d]/g,'')"
-    >
-    <div class="f-err" id="e-bank5">請填寫匯款帳號末 5 碼（5 位數字）</div>
+    <div class="f-group" style="margin-bottom:0">
+      <label class="f-label">匯款帳號末 5 碼</label>
+      <input 
+        id="f-bank5" 
+        class="f-input" 
+        type="tel" 
+        pattern="\d{5}" 
+        inputmode="numeric" 
+        maxlength="5" 
+        placeholder="請輸入 5 位數字"
+        oninput="this.value=this.value.replace(/[^\d]/g,'')"
+      >
+      <div class="f-err" id="e-bank5">請填寫匯款帳號末 5 碼（5 位數字）</div>
+    </div>
   </div>
-</div>
 
   <!-- SUCCESS -->
   <div class="success-box a5" id="success-box" style="display:none;">
@@ -440,7 +440,7 @@
 
   <!-- SUBMIT -->
   <div class="a5" style="padding:0 1rem; margin-bottom:1rem;">
-    <button class="submit-btn" id="submit-btn" onclick="submitForm()">確 認 送 出 預 購</button>
+    <button type="button" class="submit-btn" id="submit-btn" onclick="submitForm()">確 認 送 出 預 購</button>
     <div id="loading-msg" style="display:none;text-align:center;padding:0.9rem;font-size:0.82rem;color:rgba(253,246,239,0.5);letter-spacing:0.12em;">送出中，請稍候⋯</div>
   </div>
 
@@ -487,7 +487,7 @@ function updatePrice() {
   document.getElementById('price-box').style.display = total > 0 ? 'block' : 'none';
 }
 
-// ── 表單欄位檢查工具 (原本遺失的程式碼補回) ──
+// ── Validation Tool ──
 function chk(inputId, errId, validateFn) {
   const input = document.getElementById(inputId);
   const err = document.getElementById(errId);
@@ -503,14 +503,13 @@ function chk(inputId, errId, validateFn) {
   return isValid;
 }
 
-// ── Validation ── 
+// ── Form Validation ──
 function validate() {
   let ok = true;
   ok = chk('f-name',  'e-name',  v => v.trim().length >= 2)  && ok;
   ok = chk('f-phone', 'e-phone', v => /^[\d\-\+\s]{8,}$/.test(v.trim())) && ok;
   ok = chk('f-addr',  'e-addr',  v => v.trim().length >= 5)  && ok;
 
-  // 獲取 input 內的值進行末 5 碼驗證
   const bank5Input = document.getElementById('f-bank5');
   const b5val = bank5Input.value.trim();
   const b5ok = /^\d{5}$/.test(b5val);
@@ -566,7 +565,6 @@ async function submitForm() {
     });
     
     loading.style.display = 'none';
-    btn.style.display = 'none';
     const box = document.getElementById('success-box');
     box.style.display = 'block';
     box.scrollIntoView({ behavior: 'smooth' });
@@ -577,3 +575,5 @@ async function submitForm() {
   }
 }
 </script>
+</body>
+</html>
