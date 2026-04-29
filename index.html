@@ -593,16 +593,15 @@ async function submitForm() {
   const disc  = Math.floor((qA + qB) / 2) * 100;
   const total = qA * pA + qB * pB - disc;
 
+  // 4. 依照指定順序匯入：時間、姓名、電話、地址、品項數量、總金額、備註(末5碼)
   const params = new URLSearchParams();
-  params.append('姓名',      document.getElementById('f-name').value.trim());
-  params.append('電話',      document.getElementById('f-phone').value.trim());
-  params.append('地址',      document.getElementById('f-addr').value.trim());
-  params.append('8粒裝數量', qA);
-  params.append('6粒裝數量', qB);
-  params.append('折扣金額',  disc);
-  params.append('合計金額',  total);
-  params.append('匯款末5碼', document.getElementById('f-bank5').value.trim()); // 修改此處
-  params.append('時間',      new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' }));
+  params.append('時間',     new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })); // A1
+  params.append('姓名',     document.getElementById('f-name').value.trim());                // B1
+  params.append('電話',     document.getElementById('f-phone').value.trim());               // C1
+  params.append('地址',     document.getElementById('f-addr').value.trim());               // D1
+  params.append('品項數量', `8粒x${qA}, 6粒x${qB}`);                                       // E1
+  params.append('總金額',   total);                                                        // F1
+  params.append('匯款資訊', `末5碼: ${document.getElementById('f-bank5').value.trim()}`);    // G1
 
   try {
     await fetch(SCRIPT_URL, {
@@ -611,6 +610,7 @@ async function submitForm() {
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: params.toString()
     });
+    
     loading.style.display = 'none';
     btn.style.display = 'none';
     const box = document.getElementById('success-box');
@@ -619,8 +619,6 @@ async function submitForm() {
   } catch (e) {
     loading.style.display = 'none';
     btn.style.display = 'block'; btn.disabled = false;
-    alert('送出失敗，請確認網路連線後再試一次。');
+    alert('送出失敗，請確認網路連線。');
   }
 }
-
-// 移除原本不必要的 Numpad 函式 (npInput, npDel, npClear, updateBank5Display)
