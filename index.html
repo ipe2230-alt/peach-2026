@@ -22,89 +22,30 @@ tailwind.config = {
 </script>
 <style>
   body { font-family: 'Noto Sans TC', sans-serif; color: #2a1a10; scroll-behavior: smooth; background: #fff5f2; }
-  
-  /* 🏔️ 滿版大圖背景區塊 */
-  .hero-fullscreen {
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: url('DSC05341.jpg') center/cover no-repeat fixed; /* 使用你的第一張大圖 */
-  }
-  .hero-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to bottom, rgba(255,245,242,0.2), rgba(255,245,242,0.9));
-  }
-  
-  /* ✨ 磨砂玻璃質感卡片 */
-  .glass-card {
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    border-radius: 3rem;
-  }
-
-  .price-card {
-    border-radius: 2rem;
-    padding: 2rem;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    background: white;
-    border: 1px solid rgba(255,153,184,0.1);
-  }
+  .hero-fullscreen { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; background: url('DSC05341.jpg') center/cover no-repeat fixed; }
+  .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(255,245,242,0.2), rgba(255,245,242,0.9)); }
+  .glass-card { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.4); border-radius: 3rem; }
+  .price-card { border-radius: 2rem; padding: 2rem; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); background: white; border: 1px solid rgba(255,153,184,0.1); }
   .price-card:hover { transform: translateY(-12px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
-  
-  .input-field {
-    background: #f8f9fa;
-    border-radius: 1rem;
-    padding: 0.8rem;
-    border: 2px solid transparent;
-    width: 100%;
-    text-align: center;
-    font-size: 1.5rem;
-    font-weight: bold;
-    transition: all 0.3s;
-  }
+  .input-field { background: #f8f9fa; border-radius: 1rem; padding: 0.8rem; border: 2px solid transparent; width: 100%; text-align: center; font-size: 1.5rem; font-weight: bold; transition: all 0.3s; }
   .input-field:focus { border-color: #ff99b8; background: white; outline: none; }
-
-  .submit-btn {
-    background: linear-gradient(135deg, #1a6e42, #2d8a5a);
-    color: white;
-    border-radius: 50px;
-    padding: 1.2rem;
-    width: 100%;
-    font-family: 'Noto Serif TC', serif;
-    font-weight: 700;
-    font-size: 1.2rem;
-    box-shadow: 0 10px 20px rgba(26,110,66,0.2);
-    transition: all 0.3s;
-  }
-  .submit-btn:hover:not(:disabled) { transform: scale(1.02); filter: brightness(1.1); }
+  .submit-btn { background: linear-gradient(135deg, #1a6e42, #2d8a5a); color: white; border-radius: 50px; padding: 1.2rem; width: 100%; font-family: 'Noto Serif TC', serif; font-weight: 700; font-size: 1.2rem; box-shadow: 0 10px 20px rgba(26,110,66,0.2); transition: all 0.3s; }
 </style>
 </head>
 <body>
 
-<!-- HERO: 大圖滿版區塊 -->
+<!-- HERO: 滿版大圖 -->
 <header class="hero-fullscreen px-6">
   <div class="hero-overlay"></div>
   <div class="relative z-10 max-w-4xl w-full text-center">
-    <div class="inline-block bg-white/80 backdrop-blur px-6 py-2 rounded-full text-pine-700 text-sm font-bold mb-8 tracking-[0.3em] shadow-sm">
-      🏔️ 大雪山海拔 1,200M 產地直送
-    </div>
-    <h1 class="font-serif text-5xl md:text-8xl font-bold text-pine-700 mb-8 leading-tight drop-shadow-sm">
-      大雪山的<br><span class="text-blossom-500">紅寶石</span>
-    </h1>
-    <p class="text-xl md:text-2xl text-stone-700 leading-relaxed mb-12 font-serif bg-white/30 inline-block px-6 py-2 rounded-lg">
-      在大雪山，我們與雲霧一起守護這份甜美。
-    </p>
-    <div>
-      <button onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})" class="submit-btn max-w-[280px]">開啟預購之旅 ↓</button>
-    </div>
+    <div class="inline-block bg-white/80 backdrop-blur px-6 py-2 rounded-full text-pine-700 text-sm font-bold mb-8 tracking-[0.3em] shadow-sm">🏔️ 大雪山海拔 1,200M 產地直送</div>
+    <h1 class="font-serif text-5xl md:text-8xl font-bold text-pine-700 mb-8 leading-tight">大雪山的<br><span class="text-blossom-500">紅寶石</span></h1>
+    <p class="text-xl md:text-2xl text-stone-700 leading-relaxed mb-12 font-serif bg-white/30 inline-block px-6 py-2 rounded-lg">在大雪山，我們與雲霧一起守護這份甜美。</p>
+    <button onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})" class="submit-btn max-w-[280px]">開啟預購之旅 ↓</button>
   </div>
 </header>
 
-<!-- PRICING & ORDER FORM -->
+<!-- ORDER FORM -->
 <section id="pricing" class="py-24 px-6 relative">
   <div class="max-w-5xl mx-auto">
     <div class="text-center mb-20">
@@ -115,45 +56,24 @@ tailwind.config = {
 
     <form id="orderForm">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mb-20">
-        <!-- 8粒裝 -->
+        <!-- 規格卡片 -->
         <div class="price-card">
-          <div class="overflow-hidden rounded-2xl mb-6">
-            <img src="DSC05394.jpg" class="w-full h-64 object-cover hover:scale-110 transition duration-700">
-          </div>
-          <h3 class="font-serif text-2xl font-bold mb-2">嚴選 8 粒裝</h3>
+          <div class="overflow-hidden rounded-2xl mb-6"><img src="DSC05394.jpg" class="w-full h-64 object-cover hover:scale-110 transition duration-700"></div>
+          <h3 class="font-serif text-2xl font-bold mb-2">嚴選 8 粒裝</h3>[cite: 1]
           <p class="text-stone-400 text-sm mb-6">纖細優雅 · 分享剛剛好的甜[cite: 1]</p>
-          <div class="flex items-end gap-2 mb-8">
-            <span class="text-4xl font-bold text-pine-700">$750</span>
-            <span class="text-stone-400 pb-1">/ 盒</span>
-          </div>
-          <div class="space-y-3">
-            <label class="text-xs font-bold text-stone-400 tracking-widest block text-center">訂購數量 (盒)</label>
-            <input type="number" id="qty8" name="qty8" inputmode="numeric" pattern="[0-9]*" placeholder="0" onfocus="this.select()" onchange="calculate()" class="input-field">
-          </div>
+          <div class="flex items-end gap-2 mb-8"><span class="text-4xl font-bold text-pine-700">$750</span><span class="text-stone-400 pb-1">/ 盒</span></div>[cite: 1]
+          <input type="number" id="qty8" name="qty8" inputmode="numeric" pattern="[0-9]*" placeholder="0" onfocus="this.select()" onchange="calculate()" class="input-field">
         </div>
-
-        <!-- 6粒裝 -->
         <div class="price-card border-2 border-blossom-500/20 shadow-lg shadow-blossom-100">
-          <div class="overflow-hidden rounded-2xl mb-6">
-            <img src="DSC05345.jpg" class="w-full h-64 object-cover hover:scale-110 transition duration-700">
-          </div>
-          <div class="flex justify-between items-start mb-2">
-            <h3 class="font-serif text-2xl font-bold">頂級 6 粒裝</h3>
-            <span class="bg-blossom-500 text-white text-[10px] px-2 py-1 rounded-full font-bold">人氣推薦</span>
-          </div>
+          <div class="overflow-hidden rounded-2xl mb-6"><img src="DSC05345.jpg" class="w-full h-64 object-cover hover:scale-110 transition duration-700"></div>
+          <h3 class="font-serif text-2xl font-bold mb-2">頂級 6 粒裝</h3>[cite: 1]
           <p class="text-stone-400 text-sm mb-6">碩大飽滿 · 極致爆汁的饗宴[cite: 1]</p>
-          <div class="flex items-end gap-2 mb-8">
-            <span class="text-4xl font-bold text-pine-700">$950</span>
-            <span class="text-stone-400 pb-1">/ 盒</span>
-          </div>
-          <div class="space-y-3">
-            <label class="text-xs font-bold text-stone-400 tracking-widest block text-center">訂購數量 (盒)</label>
-            <input type="number" id="qty6" name="qty6" inputmode="numeric" pattern="[0-9]*" placeholder="0" onfocus="this.select()" onchange="calculate()" class="input-field">
-          </div>
+          <div class="flex items-end gap-2 mb-8"><span class="text-4xl font-bold text-pine-700">$950</span><span class="text-stone-400 pb-1">/ 盒</span></div>[cite: 1]
+          <input type="number" id="qty6" name="qty6" inputmode="numeric" pattern="[0-9]*" placeholder="0" onfocus="this.select()" onchange="calculate()" class="input-field">
         </div>
       </div>
 
-      <!-- 顧客資訊區塊 (玻璃質感) -->
+      <!-- 顧客資訊區塊 -->
       <div class="max-w-2xl mx-auto glass-card shadow-2xl p-8 md:p-16">
         <div class="text-center mb-12">
           <p class="text-stone-400 text-xs tracking-[0.2em] mb-3 uppercase">結帳總金額</p>
@@ -163,28 +83,31 @@ tailwind.config = {
 
         <div class="grid gap-8">
           <div class="grid md:grid-cols-2 gap-6">
-            <div class="space-y-2">
-              <label class="text-xs font-bold text-pine-600 px-1">收件人姓名</label>
-              <input type="text" name="name" required class="w-full px-5 py-4 rounded-2xl bg-white/50 border border-white focus:bg-white transition outline-none">
+            <input type="text" name="name" placeholder="收件人姓名" required class="w-full px-5 py-4 rounded-2xl bg-white/50 border border-white outline-none">
+            <input type="tel" name="phone" placeholder="連絡電話" inputmode="tel" required class="w-full px-5 py-4 rounded-2xl bg-white/50 border border-white outline-none">
+          </div>
+          <input type="text" name="address" placeholder="收件地址" required class="w-full px-5 py-4 rounded-2xl bg-white/50 border border-white outline-none">
+
+          <!-- 💳 匯款資訊與 QR Code 區塊 (已更新) -->
+          <div class="bg-white/40 backdrop-blur-sm p-8 rounded-3xl border border-white">
+            <p class="font-serif text-pine-700 font-bold mb-6 text-center">💰 匯款資訊</p>
+            <div class="flex flex-col md:flex-row items-center gap-8">
+              <div class="w-32 h-32 bg-white p-2 rounded-xl shadow-inner border border-stone-100 flex-shrink-0">
+                <!-- 這裡請放你上傳的 bank_qr.png -->
+                <img src="bank_qr.png" alt="中信匯款 QR Code" class="w-full h-full object-contain">
+              </div>
+              <div class="flex-grow space-y-2 text-center md:text-left">
+                <p class="text-xs font-bold text-stone-400 uppercase tracking-widest">中國信託 (822)</p>
+                <p class="text-base text-pine-600 font-bold leading-relaxed">
+                  帳號：901620382731<br>
+                  分行：營業部 (0901)
+                </p>
+                <input type="text" name="bank_id" placeholder="請填寫匯款末五碼" required class="w-full mt-2 px-4 py-3 rounded-xl border-none shadow-sm outline-none text-sm">
+              </div>
             </div>
-            <div class="space-y-2">
-              <label class="text-xs font-bold text-pine-600 px-1">連絡電話</label>
-              <input type="tel" name="phone" inputmode="tel" required class="w-full px-5 py-4 rounded-2xl bg-white/50 border border-white focus:bg-white transition outline-none">
-            </div>
           </div>
-          <div class="space-y-2">
-            <label class="text-xs font-bold text-pine-600 px-1">收件地址</label>
-            <input type="text" name="address" required class="w-full px-5 py-4 rounded-2xl bg-white/50 border border-white focus:bg-white transition outline-none">
-          </div>
-          <div class="bg-white/40 backdrop-blur-sm p-6 rounded-3xl border border-white">
-            <p class="font-serif text-pine-700 font-bold mb-2">💰 匯款資訊[cite: 1]</p>
-            <p class="text-sm text-pine-600 mb-4 font-medium">華南銀行(008) 帳號 123-456789-012</p>
-            <input type="text" name="bank_id" placeholder="請填寫匯款帳號末五碼" required class="w-full px-4 py-3 rounded-xl border-none shadow-inner outline-none">
-          </div>
-          <div class="space-y-2">
-            <label class="text-xs font-bold text-pine-600 px-1">備註 (選填)</label>
-            <textarea name="note" rows="2" class="w-full px-5 py-4 rounded-2xl bg-white/50 border border-white focus:bg-white transition outline-none"></textarea>
-          </div>
+
+          <textarea name="note" placeholder="備註 (選填)" rows="2" class="w-full px-5 py-4 rounded-2xl bg-white/50 border border-white outline-none"></textarea>
           <button type="submit" id="submitBtn" class="submit-btn mt-4">確認送出預購單</button>
         </div>
       </div>
@@ -192,53 +115,36 @@ tailwind.config = {
   </div>
 </section>
 
-<!-- CONTACT (櫻花粉背景區塊)[cite: 1] -->
+<!-- CONTACT -->
 <section id="contact" class="py-24 px-6 bg-blossom-50">
   <div class="max-w-4xl mx-auto">
     <div class="grid md:grid-cols-2 gap-16 items-center">
       <div class="space-y-8">
-        <div class="section-divider w-12 h-1 bg-pine-600"></div>
         <h2 class="font-serif text-4xl font-bold text-pine-700">與山林對話</h2>
-        <p class="text-stone-500 font-serif italic">「每一份託付，我們都視如己出。」</p>
         <ul class="space-y-6">
-          <li class="flex items-center gap-4 text-stone-700">
-            <span class="w-10 h-10 flex items-center justify-center bg-white rounded-full shadow-sm text-lg">📍</span>
-            <div><p class="text-xs font-bold text-stone-400">農場位置</p><p>南投縣仁愛鄉高山路 123 號[cite: 1]</p></div>
-          </li>
-          <li class="flex items-center gap-4 text-stone-700">
-            <span class="w-10 h-10 flex items-center justify-center bg-white rounded-full shadow-sm text-lg">📞</span>
-            <div><p class="text-xs font-bold text-stone-400">專線</p><p>049-123-4567[cite: 1]</p></div>
-          </li>
-          <li class="flex items-center gap-4 text-stone-700">
-            <span class="w-10 h-10 flex items-center justify-center bg-white rounded-full shadow-sm text-lg">📱</span>
-            <div><p class="text-xs font-bold text-stone-400">LINE</p><p>@yamanosara[cite: 1]</p></div>
-          </li>
+          <li class="flex items-center gap-4 text-stone-700">📍 <div><p class="text-xs font-bold text-stone-400">農場位置</p><p>桃園大雪山農場[cite: 1]</p></div></li>
+          <li class="flex items-center gap-4 text-stone-700">📞 <div><p class="text-xs font-bold text-stone-400">專線</p><p>049-123-4567[cite: 1]</p></div></li>
+          <li class="flex items-center gap-4 text-stone-700">📱 <div><p class="text-xs font-bold text-stone-400">LINE</p><p>@yamanosara[cite: 1]</p></div></li>
         </ul>
       </div>
-      <div class="bg-white p-10 rounded-[3rem] shadow-sm border border-stone-100">
+      <div class="bg-white p-10 rounded-[3rem] shadow-sm">
         <h3 class="font-serif text-xl font-bold text-stone-700 mb-6">服務時間[cite: 1]</h3>
-        <div class="space-y-4 text-stone-500 text-sm">
-          <p class="flex justify-between border-b pb-2"><span>週一 ～ 週五</span> <span>9:00 - 18:00</span></p>
-          <p class="flex justify-between border-b pb-2 text-pine-600 font-bold"><span>週六 (限出貨)</span> <span>9:00 - 16:00</span></p>
-          <p class="flex justify-between border-b pb-2 opacity-50"><span>週日</span> <span>山林休息日</span></p>
-        </div>
-        <div class="mt-8 p-4 bg-blossom-50 rounded-2xl">
-          <p class="text-xs text-blossom-600 leading-relaxed">
-            📣 採摘旺季（6月–8月）訂單量大，建議提前 3 天預訂，確保果實熟度最美。[cite: 1]
-          </p>
-        </div>
+        <p class="text-sm text-stone-500 leading-loose">
+          週一 ～ 週五 9:00 - 18:00<br>
+          週六 9:00 - 16:00 (限出貨)<br>
+          週日 公休[cite: 1]
+        </p>
       </div>
     </div>
   </div>
 </section>
 
-<footer class="bg-white py-12 text-center text-stone-400 text-sm tracking-widest border-t border-stone-100">
+<footer class="bg-white py-12 text-center text-stone-400 text-sm tracking-widest">
   <p class="font-serif text-lg text-pine-700 mb-2">山之源桃園</p>
   <p>© 2026 山之源桃園 All Rights Reserved[cite: 1]</p>
 </footer>
 
 <script>
-    // 🚀 已帶入您的自動化部署網址
     const scriptURL = 'https://script.google.com/macros/s/AKfycbxUel6rxdJcctE-tclrThQWE3CfBsG3Egk3coi6Uf-ZTiaYk9s0cG3P8w8GO7nMHsGF/exec';
 
     function calculate() {
@@ -256,23 +162,11 @@ tailwind.config = {
         e.preventDefault();
         const btn = document.getElementById('submitBtn');
         if (document.getElementById('hiddenTotal').value <= 0) return alert('請先填寫訂購數量唷！');
-        
         btn.disabled = true;
-        btn.innerHTML = '<span class="animate-pulse">傳遞山林的甜美中...</span>';
-
+        btn.innerText = '正在傳遞山林的甜美...';
         fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-            .then(response => {
-                alert('感謝預購！這份來自大雪山的清甜即將與您相遇。');
-                form.reset();
-                calculate();
-                btn.disabled = false;
-                btn.innerText = '確認送出預購單';
-            })
-            .catch(error => {
-                alert('喔喔，傳送出了一點問題，請檢查網路後再試試看！');
-                btn.disabled = false;
-                btn.innerText = '確認送出預購單';
-            });
+            .then(() => { alert('感謝預購！資料已送出。'); form.reset(); calculate(); btn.disabled = false; btn.innerText = '確認送出預購單'; })
+            .catch(() => { alert('發送失敗'); btn.disabled = false; });
     });
 </script>
 </body>
