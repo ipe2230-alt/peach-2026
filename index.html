@@ -487,39 +487,23 @@ function updatePrice() {
   document.getElementById('price-box').style.display = total > 0 ? 'block' : 'none';
 }
 
-// ── Numpad ──
-let bank5Val = '';
-
-function npInput(n) {
-  if (bank5Val.length >= 5) return;
-  bank5Val += n;
-  updateBank5Display();
-}
-function npDel() {
-  bank5Val = bank5Val.slice(0, -1);
-  updateBank5Display();
-}
-function npClear() {
-  bank5Val = '';
-  updateBank5Display();
-}
-function updateBank5Display() {
-  document.getElementById('f-bank5').value = bank5Val;
-  const display = document.getElementById('bank5-display');
-  const dots = document.getElementById('bank5-dots');
-  // Show filled digits + remaining underscores
-  let shown = '';
-  for (let i = 0; i < 5; i++) {
-    shown += i < bank5Val.length ? bank5Val[i] : '_';
-    if (i < 4) shown += ' ';
+// ── 表單欄位檢查工具 (原本遺失的程式碼補回) ──
+function chk(inputId, errId, validateFn) {
+  const input = document.getElementById(inputId);
+  const err = document.getElementById(errId);
+  const isValid = validateFn(input.value);
+  
+  if (!isValid) {
+    input.classList.add('err');
+    err.style.display = 'block';
+  } else {
+    input.classList.remove('err');
+    err.style.display = 'none';
   }
-  dots.textContent = shown;
-  display.classList.toggle('filled', bank5Val.length === 5);
-  display.classList.remove('err-border');
-  document.getElementById('e-bank5').style.display = 'none';
+  return isValid;
 }
 
-// ── Validation ── (修正驗證邏輯，直接讀取 input 的值)
+// ── Validation ── 
 function validate() {
   let ok = true;
   ok = chk('f-name',  'e-name',  v => v.trim().length >= 2)  && ok;
@@ -564,15 +548,14 @@ async function submitForm() {
   const disc  = Math.floor((qA + qB) / 2) * 100;
   const total = qA * pA + qB * pB - disc;
 
-  // 4. 依照指定順序匯入：時間、姓名、電話、地址、品項數量、總金額、備註(末5碼)
   const params = new URLSearchParams();
-  params.append('時間',     new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })); // A1
-  params.append('姓名',     document.getElementById('f-name').value.trim());                // B1
-  params.append('電話',     document.getElementById('f-phone').value.trim());               // C1
-  params.append('地址',     document.getElementById('f-addr').value.trim());               // D1
-  params.append('品項數量', `8粒x${qA}, 6粒x${qB}`);                                       // E1
-  params.append('總金額',   total);                                                        // F1
-  params.append('匯款資訊', `末5碼: ${document.getElementById('f-bank5').value.trim()}`);    // G1
+  params.append('時間',     new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })); 
+  params.append('姓名',     document.getElementById('f-name').value.trim());                
+  params.append('電話',     document.getElementById('f-phone').value.trim());               
+  params.append('地址',     document.getElementById('f-addr').value.trim());               
+  params.append('品項數量', `8粒x${qA}, 6粒x${qB}`);                                       
+  params.append('總金額',   total);                                                        
+  params.append('匯款資訊', `末5碼: ${document.getElementById('f-bank5').value.trim()}`);    
 
   try {
     await fetch(SCRIPT_URL, {
@@ -593,3 +576,4 @@ async function submitForm() {
     alert('送出失敗，請確認網路連線。');
   }
 }
+</script>
