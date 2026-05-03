@@ -790,7 +790,8 @@ async function submitForm() {
   params.append('合計金額',  total);
   params.append('匯款末5碼', document.getElementById('f-bank5').value.trim());
   params.append('時間',      new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' }));
-
+  params.append('備註', document.getElementById('f-note').value.trim());
+  
   try {
     // mode:'no-cors' is required for Google Apps Script cross-origin POST
     await fetch(SCRIPT_URL, {
