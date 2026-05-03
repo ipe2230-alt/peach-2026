@@ -439,7 +439,7 @@
             <span class="spec-price-big">$750</span>
             <span class="spec-price-unit">/ 盒（含運）</span>
           </div>
-          <div class="spec-discount-note">滿 2 盒（含混搭）每 2 盒折 $100</div>
+          <div class="spec-discount-note">每滿 2 盒（可混搭）省運費 $150</div>
         </div>
       </div>
       <div class="spec-bottom">
@@ -466,7 +466,7 @@
             <span class="spec-price-big">$950</span>
             <span class="spec-price-unit">/ 盒（含運）</span>
           </div>
-          <div class="spec-discount-note">滿 2 盒（含混搭）每 2 盒折 $100</div>
+          <div class="spec-discount-note">每滿 2 盒（可混搭）省運費 $150</div>
         </div>
       </div>
       <div class="spec-bottom">
@@ -488,7 +488,7 @@
       <div class="p-row"><span>8 粒裝 × <span id="sp-qa">0</span> 盒</span><span id="sp-pa">$0</span></div>
       <div class="p-row"><span>6 粒裝 × <span id="sp-qb">0</span> 盒</span><span id="sp-pb">$0</span></div>
       <div class="p-row" id="disc-row" style="display:none;">
-        <span style="color:var(--blush-light)">雙數折扣</span>
+        <span style="color:var(--blush-light)">運費優惠</span>
         <span style="color:var(--blush-light)" id="sp-disc"></span>
       </div>
       <div class="p-row total">
@@ -579,7 +579,7 @@
         <span class="faq-arrow">＋</span>
       </button>
       <div class="faq-body-wrap">
-        <div class="faq-body">採用<strong>全程低溫冷鏈宅配（0–7°C）</strong>，確保桃子從大雪山農場到您手中全程低溫。每日上午截單，隔日配送。</div>
+        <div class="faq-body">採用<strong>全程低溫冷鏈宅配（0–7°C）</strong>，搭配保麗龍保鮮盒與冰寶，確保桃子從大雪山農場到您手中全程低溫。夏季旺季（6–8月）每日上午截單，隔日配送。</div>
       </div>
     </div>
 
@@ -612,7 +612,7 @@
         <span class="faq-arrow">＋</span>
       </button>
       <div class="faq-body-wrap">
-        <div class="faq-body">完全正常！冰涼是冷鏈成功的證明。<strong>若外層有冷凝水珠</strong>，代表全程低溫保鮮良好，請放心食用。</div>
+        <div class="faq-body">完全正常！冰涼是冷鏈成功的證明。建議拆開後讓桃子回溫 15–20 分鐘，風味更豐富。<strong>若外層有冷凝水珠</strong>，代表全程低溫保鮮良好，請放心食用。</div>
       </div>
     </div>
 
@@ -659,7 +659,7 @@ function updatePrice() {
   const total = qA + qB;
   const raw   = qA * pA + qB * pB;
   const pairs = Math.floor(total / 2);
-  const disc  = pairs * 100;
+  const disc  = pairs * 150;
   const final = raw - disc;
 
   document.getElementById('sp-qa').textContent = qA;
@@ -672,7 +672,8 @@ function updatePrice() {
   const discRow = document.getElementById('disc-row');
   if (disc > 0) {
     discTag.style.display = 'inline-flex';
-    document.getElementById('disc-txt').textContent = `合計 ${total} 盒，折抵 $${disc.toLocaleString()}`;
+    document.getElementById('disc-txt').textContent =
+      `合計 ${total} 盒，省運費 $${disc.toLocaleString()}`;
     discRow.style.display = 'flex';
     document.getElementById('sp-disc').textContent = '-$' + disc.toLocaleString();
   } else {
@@ -722,7 +723,7 @@ async function submitForm() {
   const loading = document.getElementById('loading-msg');
   btn.disabled = true; btn.style.display = 'none'; loading.style.display = 'block';
 
-  const disc  = Math.floor((qA + qB) / 2) * 100;
+  const disc  = Math.floor((qA + qB) / 2) * 150;
   const total = qA * pA + qB * pB - disc;
 
   // Build URL-encoded string — most reliable method for Google Apps Script doPost
