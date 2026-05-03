@@ -2,56 +2,60 @@
 <html lang="zh-TW">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>桃之家 — 紅玉水蜜桃預購</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
   :root {
-    --pine: #1a4a2e;
-    --pine-light: #2d6e47;
-    --blush: #e8a090;
-    --blush-light: #f2c4b8;
-    --cream: #fdf6ef;
-    --gold: #b8975a;
-    --gold-light: #d4b47a;
+    /* 日系色盤：深胭脂 × 桜粉 × 山吹金 × 奶白 */
+    --rosewood:   #3d1a1f;
+    --crimson:    #6b2233;
+    --blush:      #d4808a;
+    --blush-light:#edb8be;
+    --cream:      #fdf5f0;
+    --gold:       #c4976a;
+    --gold-light: #dbb98a;
+    --jade:       #4a7c6f;   /* 少量點綴用 */
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
   body {
     font-family: 'Noto Sans TC', sans-serif;
-    background: #0f2e1b;
+    background: #2a0e12;
     color: var(--cream);
     min-height: 100vh;
     overflow-x: hidden;
   }
 
-  /* BG — use pseudo on body to avoid fixed jitter on iOS */
+  /* BG — 果紅大圖，日系暖調霧化疊層 */
   body::before {
     content: '';
     position: fixed;
     inset: 0;
     background-image: url('DSC05341.jpg');
     background-size: cover;
-    background-position: center 30%;
+    background-position: center 40%;
     z-index: 0;
+    filter: saturate(1.15) brightness(0.9);
   }
   body::after {
     content: '';
     position: fixed;
     inset: 0;
-    background: linear-gradient(160deg, rgba(8,24,14,0.75) 0%, rgba(15,40,22,0.62) 45%, rgba(20,50,30,0.72) 100%);
+    /* 日系暖調：深胭脂上層 + 中段輕透 + 底部再收深 */
+    background: linear-gradient(
+      180deg,
+      rgba(35, 8, 12, 0.82) 0%,
+      rgba(55, 15, 22, 0.55) 35%,
+      rgba(45, 12, 18, 0.60) 65%,
+      rgba(30, 6, 10, 0.80) 100%
+    );
     z-index: 0;
   }
 
-  /* 電腦版版面置中 */
-  .content { 
-    position: relative; 
-    z-index: 1; 
-    padding-bottom: 4rem; 
-    max-width: 600px; 
-    margin: 0 auto;   
-  }
+  .content { position: relative; z-index: 1; padding-bottom: 4rem;
+    max-width: 520px; margin: 0 auto; }
 
   /* Hero */
   .hero { padding: 3.8rem 1.5rem 2.2rem; text-align: center; }
@@ -102,11 +106,11 @@
 
   /* Cards */
   .card {
-    background: rgba(12,35,20,0.58);
-    border: 1px solid rgba(184,151,90,0.25);
+    background: rgba(35, 8, 14, 0.62);
+    border: 1px solid rgba(196,151,106,0.28);
     border-radius: 20px;
-    backdrop-filter: blur(22px);
-    -webkit-backdrop-filter: blur(22px);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
     padding: 1.8rem 1.4rem;
     margin: 0 1rem 1.2rem;
   }
@@ -160,39 +164,85 @@
 
   /* Spec rows */
   .spec-row {
-    display: flex; align-items: center; gap: 0.5rem;
-    background: rgba(253,246,239,0.04);
-    border: 1px solid rgba(184,151,90,0.18);
+    background: rgba(253,245,240,0.05);
+    border: 1px solid rgba(196,151,106,0.25);
+    border-radius: 16px;
+    padding: 1.1rem 1.1rem 1.1rem 1rem;
+    margin-bottom: 0.9rem;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .spec-row:hover { border-color: rgba(196,151,106,0.55); background: rgba(196,151,106,0.06); }
+  .spec-top { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1rem; }
+  .spec-photo {
+    width: 88px; height: 88px;
     border-radius: 12px;
-    padding: 0.7rem 0.8rem;
-    margin-bottom: 0.7rem;
+    object-fit: cover;
+    flex-shrink: 0;
+    border: 1px solid rgba(184,151,90,0.3);
   }
-  .spec-info { flex: 1; }
-  
-  /* 規格品名與金額放大強調 */
-  .spec-name { font-size: 1rem; font-weight: 600; } 
-  .spec-price { 
-    font-size: 1rem; 
-    color: #ffb7b7;
-    white-space: nowrap;
-    font-weight: bold;
+  .spec-info { flex: 1; padding-top: 0.1rem; }
+  .spec-name {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1rem; color: #fff; font-weight: 600;
+    letter-spacing: 0.05em; margin-bottom: 0.3rem;
   }
-  
-  .qty-ctrl { display: flex; align-items: center; gap: 0.3rem; }
+  .spec-tag {
+    display: inline-block;
+    background: rgba(232,160,144,0.15);
+    border: 1px solid rgba(232,160,144,0.3);
+    border-radius: 100px;
+    padding: 0.1rem 0.65rem;
+    font-size: 0.68rem;
+    color: var(--blush-light);
+    margin-bottom: 0.5rem;
+  }
+  .spec-price-big {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: var(--gold-light);
+    line-height: 1;
+    letter-spacing: 0.02em;
+  }
+  .spec-price-unit {
+    font-size: 0.78rem;
+    color: rgba(253,246,239,0.5);
+    margin-left: 0.2rem;
+    font-weight: 400;
+  }
+  .spec-discount-note {
+    font-size: 0.7rem;
+    color: var(--blush-light);
+    margin-top: 0.3rem;
+    opacity: 0.85;
+  }
+  .spec-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid rgba(184,151,90,0.12);
+    padding-top: 0.8rem;
+  }
+  .spec-bottom-label { font-size: 0.75rem; color: rgba(253,246,239,0.45); letter-spacing: 0.1em; }
+  .qty-ctrl { display: flex; align-items: center; gap: 0.7rem; }
   .qty-btn {
-    width: 28px; height: 28px; border-radius: 50%;
+    width: 36px; height: 36px; border-radius: 50%;
     border: 1px solid rgba(184,151,90,0.45);
     background: rgba(184,151,90,0.1);
     color: var(--gold-light);
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     cursor: pointer;
     display: flex; align-items: center; justify-content: center;
     transition: background 0.15s;
     -webkit-tap-highlight-color: transparent;
     user-select: none;
   }
-  .qty-btn:active { background: rgba(184,151,90,0.28); }
-  .qty-num { font-family: 'Noto Serif TC', serif; font-size: 1.05rem; color: #fff; width: 20px; text-align: center; font-weight: 500; }
+  .qty-btn:active { background: rgba(184,151,90,0.3); }
+  .qty-num {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1.3rem; color: #fff;
+    width: 32px; text-align: center; font-weight: 600;
+  }
 
   /* Price summary */
   .price-box {
@@ -200,7 +250,7 @@
     border: 1px solid rgba(232,160,144,0.18);
     border-radius: 12px;
     padding: 1rem 1.1rem;
-    margin-top: 0rem;
+    margin-top: 0.5rem;
   }
   .disc-tag {
     display: inline-flex; align-items: center; gap: 0.3rem;
@@ -224,16 +274,7 @@
     font-family: 'Noto Serif TC', serif;
     font-size: 1.02rem; font-weight: 600;
   }
-  .p-total-val { color: var(--gold-light); font-size: 1.5rem; }
-
-  /* Spec photo */
-  .spec-photo {
-    width: 100px; height: 100px;
-    border-radius: 10px;
-    object-fit: cover;
-    flex-shrink: 0;
-    border: 1px solid rgba(184,151,90,0.25);
-  }
+  .p-total-val { color: var(--gold-light); font-size: 1.15rem; }
 
   /* Bank */
   .bank-qr-wrap { text-align: center; margin-bottom: 1.2rem; }
@@ -267,8 +308,8 @@
   /* Submit */
   .submit-btn {
     width: 100%;
-    background: linear-gradient(135deg, #2d6e47, #1a4a2e);
-    border: 1px solid rgba(184,151,90,0.38);
+    background: linear-gradient(135deg, #7a2535, #4a1220);
+    border: 1px solid rgba(196,151,106,0.42);
     border-radius: 100px;
     padding: 1.05rem 2rem;
     color: #fff;
@@ -277,20 +318,21 @@
     font-weight: 500;
     letter-spacing: 0.22em;
     cursor: pointer;
-    box-shadow: 0 4px 28px rgba(0,0,0,0.35);
-    transition: transform 0.15s, opacity 0.15s;
+    box-shadow: 0 4px 28px rgba(100,10,25,0.45);
+    transition: transform 0.15s, opacity 0.15s, box-shadow 0.15s;
     -webkit-tap-highlight-color: transparent;
   }
+  .submit-btn:hover { box-shadow: 0 6px 32px rgba(120,20,35,0.55); }
   .submit-btn:active { transform: scale(0.98); }
   .submit-btn:disabled { opacity: 0.45; cursor: not-allowed; }
 
   /* Success */
   .success-box {
     text-align: center; padding: 2.2rem 1rem;
-    background: rgba(12,35,20,0.58);
-    border: 1px solid rgba(184,151,90,0.25);
+    background: rgba(35, 8, 14, 0.62);
+    border: 1px solid rgba(196,151,106,0.28);
     border-radius: 20px;
-    backdrop-filter: blur(22px);
+    backdrop-filter: blur(24px);
     margin: 0 1rem 1.2rem;
   }
   .success-icon { font-size: 2.8rem; margin-bottom: 1rem; }
@@ -306,6 +348,55 @@
   .a3 { animation: fadeUp 0.75s 0.2s ease both; }
   .a4 { animation: fadeUp 0.75s 0.3s ease both; }
   .a5 { animation: fadeUp 0.75s 0.4s ease both; }
+
+  /* FAQ */
+  .faq-item {
+    border-radius: 14px;
+    border: 1px solid rgba(184,151,90,0.2);
+    overflow: hidden;
+    transition: border-color 0.25s, box-shadow 0.25s;
+  }
+  .faq-item:hover {
+    border-color: rgba(196,151,106,0.5);
+    box-shadow: 0 4px 20px rgba(80,10,20,0.3);
+  }
+  .faq-btn { 
+    width: 100%; text-align: left;
+    padding: 1.1rem 1.2rem;
+    background: rgba(253,245,240,0.04);
+    border: none; cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center; gap: 0.8rem;
+    font-family: 'Noto Serif TC', serif;
+    font-size: 0.88rem; font-weight: 500;
+    color: rgba(253,245,240,0.9);
+    line-height: 1.5;
+    transition: background 0.2s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .faq-btn:hover { background: rgba(196,151,106,0.1); }
+  .faq-btn.open  { background: rgba(196,151,106,0.1); }
+  .faq-arrow {
+    font-size: 1rem; color: var(--gold-light); flex-shrink: 0;
+    transition: transform 0.3s ease;
+    display: inline-block;
+  }
+  .faq-body-wrap {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.38s cubic-bezier(0.4,0,0.2,1);
+  }
+  .faq-body-wrap.open { max-height: 400px; }
+  .faq-body {
+    padding: 0.85rem 1.2rem 1.2rem;
+    background: rgba(30, 6, 12, 0.5);
+    color: rgba(253,245,240,0.7);
+    font-size: 0.83rem; line-height: 1.95;
+    border-top: 1px solid rgba(196,151,106,0.12);
+  }
+  .faq-body strong { color: var(--gold-light); font-weight: 500; }
+
+  /* a6 animation */
+  .a6 { animation: fadeUp 0.75s 0.5s ease both; }
 </style>
 </head>
 <body>
@@ -316,6 +407,14 @@
     <div class="brand-tag">桃 之 家　TAOZHIJIA</div>
     <h1 class="hero-title">紅玉水蜜桃</h1>
     <p class="hero-en">RED JADE PEACH　預 購</p>
+
+    <!-- 三大文案徽章 -->
+    <div style="display:flex; justify-content:center; gap:0.6rem; flex-wrap:wrap; margin-bottom:1.6rem;">
+      <span style="display:inline-flex; align-items:center; gap:0.3rem; background:rgba(184,151,90,0.12); border:1px solid rgba(184,151,90,0.35); border-radius:100px; padding:0.3rem 0.85rem; font-family:'Noto Serif TC',serif; font-size:0.72rem; color:var(--gold-light); letter-spacing:0.12em;">🏔 大雪山麓</span>
+      <span style="display:inline-flex; align-items:center; gap:0.3rem; background:rgba(184,151,90,0.12); border:1px solid rgba(184,151,90,0.35); border-radius:100px; padding:0.3rem 0.85rem; font-family:'Noto Serif TC',serif; font-size:0.72rem; color:var(--gold-light); letter-spacing:0.12em;">🌿 自家農園</span>
+      <span style="display:inline-flex; align-items:center; gap:0.3rem; background:rgba(184,151,90,0.12); border:1px solid rgba(184,151,90,0.35); border-radius:100px; padding:0.3rem 0.85rem; font-family:'Noto Serif TC',serif; font-size:0.72rem; color:var(--gold-light); letter-spacing:0.12em;">🍑 完熟採擷</span>
+    </div>
+
     <div class="hero-divider"></div>
     <p class="hero-desc">每一顆水蜜桃，都承載著大雪山冷冽清晨的露水，與父親守護土地的溫度。我們堅持職人栽培，將這份純淨甜美由產地直達到您的手中。</p>
   </div>
@@ -328,29 +427,55 @@
 
     <!-- Spec A: 8粒 -->
     <div class="spec-row">
-      <img src="DSC05394.jpg" alt="8粒裝" class="spec-photo" onerror="this.style.display='none'">
-      <div class="spec-info">
-        <div class="spec-name">8 粒裝禮盒</div>
-        <div class="spec-price">每盒 $750</div>
+      <div class="spec-top">
+        <img src="DSC05394.jpg" alt="8粒裝" class="spec-photo" onerror="this.style.display='none'">
+        <div class="spec-info">
+          <div class="spec-name">8 粒裝禮盒</div>
+          <div style="display:flex; gap:0.4rem; flex-wrap:wrap; margin-bottom:0.45rem;">
+            <div class="spec-tag">精選禮盒</div>
+            <div class="spec-tag" style="background:rgba(74,124,111,0.15); border-color:rgba(74,180,140,0.3); color:#8ed8c0;">含運費</div>
+          </div>
+          <div>
+            <span class="spec-price-big">$750</span>
+            <span class="spec-price-unit">/ 盒（含運）</span>
+          </div>
+          <div class="spec-discount-note">滿 2 盒（含混搭）每 2 盒折 $100</div>
+        </div>
       </div>
-      <div class="qty-ctrl">
-        <button type="button" class="qty-btn" onclick="changeQty('a',-1)">−</button>
-        <div class="qty-num" id="qa">0</div>
-        <button type="button" class="qty-btn" onclick="changeQty('a',1)">＋</button>
+      <div class="spec-bottom">
+        <span class="spec-bottom-label">選購數量</span>
+        <div class="qty-ctrl">
+          <button class="qty-btn" onclick="changeQty('a',-1)">−</button>
+          <div class="qty-num" id="qa">0</div>
+          <button class="qty-btn" onclick="changeQty('a',1)">＋</button>
+        </div>
       </div>
     </div>
 
     <!-- Spec B: 6粒 -->
     <div class="spec-row">
-      <img src="DSC05379.jpg" alt="6粒裝" class="spec-photo" onerror="this.style.display='none'">
-      <div class="spec-info">
-        <div class="spec-name">6 粒裝禮盒</div>
-        <div class="spec-price">每盒 $950</div>
+      <div class="spec-top">
+        <img src="DSC05345.jpg" alt="6粒裝" class="spec-photo" onerror="this.style.display='none'">
+        <div class="spec-info">
+          <div class="spec-name">6 粒裝禮盒</div>
+          <div style="display:flex; gap:0.4rem; flex-wrap:wrap; margin-bottom:0.45rem;">
+            <div class="spec-tag">輕量嚐鮮</div>
+            <div class="spec-tag" style="background:rgba(74,124,111,0.15); border-color:rgba(74,180,140,0.3); color:#8ed8c0;">含運費</div>
+          </div>
+          <div>
+            <span class="spec-price-big">$950</span>
+            <span class="spec-price-unit">/ 盒（含運）</span>
+          </div>
+          <div class="spec-discount-note">滿 2 盒（含混搭）每 2 盒折 $100</div>
+        </div>
       </div>
-      <div class="qty-ctrl">
-        <button type="button" class="qty-btn" onclick="changeQty('b',-1)">−</button>
-        <div class="qty-num" id="qb">0</div>
-        <button type="button" class="qty-btn" onclick="changeQty('b',1)">＋</button>
+      <div class="spec-bottom">
+        <span class="spec-bottom-label">選購數量</span>
+        <div class="qty-ctrl">
+          <button class="qty-btn" onclick="changeQty('b',-1)">−</button>
+          <div class="qty-num" id="qb">0</div>
+          <button class="qty-btn" onclick="changeQty('b',1)">＋</button>
+        </div>
       </div>
     </div>
 
@@ -416,18 +541,14 @@
       <div class="b-row"><span class="b-key">帳　　號</span><span class="b-val" style="font-size:0.95rem;letter-spacing:0.08em;">901620382731</span></div>
     </div>
 
+    <!-- 末5碼 — 原生輸入，手機自動跳數字鍵盤 -->
     <div class="f-group" style="margin-bottom:0">
       <label class="f-label">匯款帳號末 5 碼</label>
-      <input 
-        id="f-bank5" 
-        class="f-input" 
-        type="tel" 
-        pattern="\d{5}" 
-        inputmode="numeric" 
-        maxlength="5" 
-        placeholder="請輸入 5 位數字"
-        oninput="this.value=this.value.replace(/[^\d]/g,'')"
-      >
+      <input id="f-bank5" class="f-input" type="text"
+        inputmode="numeric" pattern="[0-9]*"
+        placeholder="請輸入匯款帳號末 5 碼"
+        maxlength="5"
+        autocomplete="off">
       <div class="f-err" id="e-bank5">請填寫匯款帳號末 5 碼（5 位數字）</div>
     </div>
   </div>
@@ -441,11 +562,84 @@
 
   <!-- SUBMIT -->
   <div class="a5" style="padding:0 1rem; margin-bottom:1rem;">
-    <button type="button" class="submit-btn" id="submit-btn" onclick="submitForm()">確 認 送 出 預 購</button>
+    <button class="submit-btn" id="submit-btn" onclick="submitForm()">確 認 送 出 預 購</button>
     <div id="loading-msg" style="display:none;text-align:center;padding:0.9rem;font-size:0.82rem;color:rgba(253,246,239,0.5);letter-spacing:0.12em;">送出中，請稍候⋯</div>
   </div>
 
-  <p class="note-txt a5">桃之家　大雪山職人栽培<br>本頁面採用加密傳輸保護您的個人資料</p>
+  <!-- ④ FAQ -->
+  <div class="card a6" style="margin-top:0;">
+    <div class="sec-label">
+      <div class="sec-line"></div><span class="sec-text">常 見 問 題</span><div class="sec-line-r"></div>
+    </div>
+
+    <!-- Q1 -->
+    <div class="faq-item" style="margin-bottom:0.65rem;">
+      <button class="faq-btn" onclick="toggleFaq(this)">
+        <span>🚚 桃子怎麼運送？溫度有保障嗎？</span>
+        <span class="faq-arrow">＋</span>
+      </button>
+      <div class="faq-body-wrap">
+        <div class="faq-body">採用<strong>全程低溫冷鏈宅配（0–7°C）</strong>，搭配保麗龍保鮮盒與冰寶，確保桃子從大雪山農場到您手中全程低溫。夏季旺季（6–8月）每日上午截單，隔日配送。</div>
+      </div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="faq-item" style="margin-bottom:0.65rem;">
+      <button class="faq-btn" onclick="toggleFaq(this)">
+        <span>📦 收到後要怎麼保存？可以放幾天？</span>
+        <span class="faq-arrow">＋</span>
+      </button>
+      <div class="faq-body-wrap">
+        <div class="faq-body">收到後請立即放入冰箱冷藏（約 5°C），建議<strong>3–5 天內食用完畢</strong>。若桃子尚未完全熟成，可先置於室溫 1 天催熟，出現香氣後再冷藏。請勿直接放入冷凍庫。</div>
+      </div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="faq-item" style="margin-bottom:0.65rem;">
+      <button class="faq-btn" onclick="toggleFaq(this)">
+        <span>📅 可以指定配送日期嗎？</span>
+        <span class="faq-arrow">＋</span>
+      </button>
+      <div class="faq-body-wrap">
+        <div class="faq-body">可以！訂購時請在備註欄填寫希望到貨的日期，我們會盡量安排。旺季期間建議<strong>提前 5–7 天</strong>預訂。農場休假日（週日）不出貨。</div>
+      </div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="faq-item" style="margin-bottom:0.65rem;">
+      <button class="faq-btn" onclick="toggleFaq(this)">
+        <span>🌡 收到時桃子是冰的，正常嗎？</span>
+        <span class="faq-arrow">＋</span>
+      </button>
+      <div class="faq-body-wrap">
+        <div class="faq-body">完全正常！冰涼是冷鏈成功的證明。建議拆開後讓桃子回溫 15–20 分鐘，風味更豐富。<strong>若外層有冷凝水珠</strong>，代表全程低溫保鮮良好，請放心食用。</div>
+      </div>
+    </div>
+
+    <!-- Q5 -->
+    <div class="faq-item" style="margin-bottom:0.65rem;">
+      <button class="faq-btn" onclick="toggleFaq(this)">
+        <span>💳 運費含在價格裡嗎？有折扣嗎？</span>
+        <span class="faq-arrow">＋</span>
+      </button>
+      <div class="faq-body-wrap">
+        <div class="faq-body">是的，<strong>所有規格均已含運費</strong>，標示價格即為到府總價，無隱藏費用。另外，兩種規格可混搭計算：每合計 2 盒即自動折抵 $100，4 盒折 $200，以此類推。</div>
+      </div>
+    </div>
+
+    <!-- Q6 -->
+    <div class="faq-item">
+      <button class="faq-btn" onclick="toggleFaq(this)">
+        <span>🏔 大雪山的桃子有什麼特別之處？</span>
+        <span class="faq-arrow">＋</span>
+      </button>
+      <div class="faq-body-wrap">
+        <div class="faq-body">大雪山麓海拔高、日夜溫差大，讓桃子糖分自然積累，果肉細緻多汁。我們家族<strong>自家農園、完熟採擷</strong>，不催熟、不噴催熟劑，每一顆都在達到最佳風味時才離枝，產地直送到您手中。</div>
+      </div>
+    </div>
+  </div>
+
+  <p class="note-txt a6">桃之家　大雪山職人栽培<br>本頁面採用加密傳輸保護您的個人資料</p>
 
 </div>
 
@@ -488,42 +682,23 @@ function updatePrice() {
   document.getElementById('price-box').style.display = total > 0 ? 'block' : 'none';
 }
 
-// ── Validation Tool ──
-function chk(inputId, errId, validateFn) {
-  const input = document.getElementById(inputId);
+// ── Validation ──
+function chk(id, errId, fn) {
+  const el  = document.getElementById(id);
+  const val = el.value !== undefined ? el.value : '';
+  const ok  = fn(val);
   const err = document.getElementById(errId);
-  const isValid = validateFn(input.value);
-  
-  if (!isValid) {
-    input.classList.add('err');
-    err.style.display = 'block';
-  } else {
-    input.classList.remove('err');
-    err.style.display = 'none';
-  }
-  return isValid;
+  if (el.classList) el.classList.toggle('err', !ok);
+  err.style.display = ok ? 'none' : 'block';
+  return ok;
 }
 
-// ── Form Validation ──
 function validate() {
   let ok = true;
   ok = chk('f-name',  'e-name',  v => v.trim().length >= 2)  && ok;
   ok = chk('f-phone', 'e-phone', v => /^[\d\-\+\s]{8,}$/.test(v.trim())) && ok;
   ok = chk('f-addr',  'e-addr',  v => v.trim().length >= 5)  && ok;
-
-  const bank5Input = document.getElementById('f-bank5');
-  const b5val = bank5Input.value.trim();
-  const b5ok = /^\d{5}$/.test(b5val);
-  
-  if (!b5ok) {
-    bank5Input.classList.add('err');
-    document.getElementById('e-bank5').style.display = 'block';
-    ok = false;
-  } else {
-    bank5Input.classList.remove('err');
-    document.getElementById('e-bank5').style.display = 'none';
-  }
-
+  ok = chk('f-bank5', 'e-bank5', v => /^\d{5}$/.test(v.trim())) && ok;
   if (qA + qB < 1) {
     document.getElementById('e-qty').style.display = 'block';
     ok = false;
@@ -532,10 +707,12 @@ function validate() {
 }
 
 // ── Google Sheets Submit ──
+// Google Apps Script requires no-cors mode; response will be opaque but data arrives correctly.
 const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxUel6rxdJcctE-tclrThQWE3CfBsG3Egk3coi6Uf-ZTiaYk9s0cG3P8w8GO7nMHsGF/exec';
 
 async function submitForm() {
   if (!validate()) {
+    // Scroll to first visible error
     const firstErr = document.querySelector('.f-err[style*="block"], #e-qty[style*="block"]');
     if (firstErr) firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
     return;
@@ -548,33 +725,71 @@ async function submitForm() {
   const disc  = Math.floor((qA + qB) / 2) * 100;
   const total = qA * pA + qB * pB - disc;
 
+  // Build URL-encoded string — most reliable method for Google Apps Script doPost
   const params = new URLSearchParams();
-  params.append('時間',     new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })); 
-  params.append('姓名',     document.getElementById('f-name').value.trim());                
-  params.append('電話',     document.getElementById('f-phone').value.trim());               
-  params.append('地址',     document.getElementById('f-addr').value.trim());               
-  params.append('品項數量', `8粒x${qA}, 6粒x${qB}`);                                       
-  params.append('總金額',   total);                                                        
-  params.append('匯款資訊',  document.getElementById('f-bank5').value.trim());    
+  params.append('姓名',      document.getElementById('f-name').value.trim());
+  params.append('電話',      document.getElementById('f-phone').value.trim());
+  params.append('地址',      document.getElementById('f-addr').value.trim());
+  params.append('8粒裝數量', qA);
+  params.append('6粒裝數量', qB);
+  params.append('折扣金額',  disc);
+  params.append('合計金額',  total);
+  params.append('匯款末5碼', document.getElementById('f-bank5').value.trim());
+  params.append('時間',      new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' }));
 
   try {
+    // mode:'no-cors' is required for Google Apps Script cross-origin POST
     await fetch(SCRIPT_URL, {
       method: 'POST',
       mode: 'no-cors',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: params.toString()
     });
-    
+    // With no-cors the response is always opaque; we assume success if no network error
     loading.style.display = 'none';
+    btn.style.display = 'none';
     const box = document.getElementById('success-box');
     box.style.display = 'block';
     box.scrollIntoView({ behavior: 'smooth' });
   } catch (e) {
     loading.style.display = 'none';
     btn.style.display = 'block'; btn.disabled = false;
-    alert('送出失敗，請確認網路連線。');
+    alert('送出失敗，請確認網路連線後再試一次。');
   }
 }
+
+// ── FAQ ──
+function toggleFaq(btn) {
+  const wrap  = btn.nextElementSibling;
+  const arrow = btn.querySelector('.faq-arrow');
+  const isOpen = wrap.classList.contains('open');
+
+  // Close all others first
+  document.querySelectorAll('.faq-body-wrap.open').forEach(w => {
+    w.classList.remove('open');
+    const b = w.previousElementSibling;
+    b.classList.remove('open');
+    b.querySelector('.faq-arrow').textContent = '＋';
+    b.querySelector('.faq-arrow').style.transform = 'rotate(0deg)';
+  });
+
+  if (!isOpen) {
+    wrap.classList.add('open');
+    btn.classList.add('open');
+    arrow.textContent = '－';
+    arrow.style.transform = 'rotate(180deg)';
+  }
+}
+
+// Clear errors on text input
+['f-name','f-phone','f-addr'].forEach(id => {
+  document.getElementById(id).addEventListener('input', function() {
+    this.classList.remove('err');
+    const key = id.replace('f-','');
+    const err = document.getElementById('e-' + key);
+    if (err) err.style.display = 'none';
+  });
+});
 </script>
 </body>
 </html>
