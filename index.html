@@ -789,7 +789,7 @@ async function submitForm() {
   // Build URL-encoded string — most reliable method for Google Apps Script doPost
   const params = new URLSearchParams();
   params.append('姓名',      document.getElementById('f-name').value.trim());
-  params.append('電話',      document.getElementById('f-phone').value.trim());
+  params.append('電話', "'" + document.getElementById('f-phone').value.trim());
   params.append('地址',      document.getElementById('f-addr').value.trim());
   params.append('8粒裝數量', qA);
   params.append('6粒裝數量', qB);
