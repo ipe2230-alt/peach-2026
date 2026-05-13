@@ -603,46 +603,7 @@
     <button class="submit-btn" id="submit-btn" onclick="submitForm()">確 認 送 出 預 購</button>
     <div id="loading-msg" style="display:none;text-align:center;padding:0.9rem;font-size:0.82rem;color:rgba(253,246,239,0.5);letter-spacing:0.12em;">送出中，請稍候⋯</div>
   </div>
-
 <!-- 客人好評 -->
-<style>
-.review-scroll {
-  display: flex;
-  gap: 0.8rem;
-  overflow-x: auto;
-  overflow-y: hidden;
-  padding: 0 0.1rem 0.7rem;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-}
-
-.review-card {
-  min-width: 220px;
-  max-width: 220px;
-  border-radius: 18px;
-  overflow: hidden;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(196,151,106,0.2);
-  scroll-snap-align: start;
-  flex-shrink: 0;
-}
-
-.review-card img {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 9/16;
-  object-fit: cover;
-  display: block;
-}
-
-@media (max-width: 600px) {
-  .review-card {
-    min-width: 78%;
-    max-width: 78%;
-  }
-}
-</style>
-
 <div class="card a6" style="overflow:hidden;">
 
   <div class="sec-label">
@@ -651,33 +612,86 @@
     <div class="sec-line-r"></div>
   </div>
 
-  <div class="review-scroll">
+  <div style="
+    display:flex;
+    gap:0.8rem;
+    overflow-x:auto;
+    overflow-y:hidden;
+    padding:0 0.1rem 0.7rem;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+  ">
 
-    <div class="review-card">
+    <div style="
+      min-width:220px;
+      max-width:220px;
+      border-radius:18px;
+      overflow:hidden;
+      background:rgba(255,255,255,0.04);
+      border:1px solid rgba(196,151,106,0.2);
+      scroll-snap-align:start;
+      flex-shrink:0;
+    ">
       <img
         src="review1.webp"
         loading="lazy"
         decoding="async"
         fetchpriority="low"
-        alt="客人好評 1">
+        style="
+          width:100%;
+          height:auto;
+          aspect-ratio:9/16;
+          object-fit:cover;
+          display:block;
+        ">
     </div>
 
-    <div class="review-card">
+    <div style="
+      min-width:220px;
+      max-width:220px;
+      border-radius:18px;
+      overflow:hidden;
+      background:rgba(255,255,255,0.04);
+      border:1px solid rgba(196,151,106,0.2);
+      scroll-snap-align:start;
+      flex-shrink:0;
+    ">
       <img
         src="review2.webp"
         loading="lazy"
         decoding="async"
         fetchpriority="low"
-        alt="客人好評 2">
+        style="
+          width:100%;
+          height:auto;
+          aspect-ratio:9/16;
+          object-fit:cover;
+          display:block;
+        ">
     </div>
 
-    <div class="review-card">
+    <div style="
+      min-width:220px;
+      max-width:220px;
+      border-radius:18px;
+      overflow:hidden;
+      background:rgba(255,255,255,0.04);
+      border:1px solid rgba(196,151,106,0.2);
+      scroll-snap-align:start;
+      flex-shrink:0;
+    ">
       <img
         src="review3.webp"
         loading="lazy"
         decoding="async"
         fetchpriority="low"
-        alt="客人好評 3">
+        style="
+          width:100%;
+          height:auto;
+          aspect-ratio:9/16;
+          object-fit:cover;
+          display:block;
+        ">
     </div>
 
   </div>
@@ -695,7 +709,6 @@
 
 </div>
 
-<!-- ④ FAQ -->
 
   <!-- ④ FAQ -->
   <div class="card a6" style="margin-top:0;">
