@@ -465,33 +465,35 @@
 <div class="spec-row" style="position:relative; overflow:hidden;">
 
   <!-- SOLD OUT 蒙版 -->
+<div style="
+  position:absolute;
+  inset:0;
+  z-index:8;
+  background:rgba(25,12,14,0.22);
+  backdrop-filter:blur(0.8px);
+  -webkit-backdrop-filter:blur(0.8px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  pointer-events:none;
+">
   <div style="
-    position:absolute;
-    inset:0;
-    z-index:8;
-    background:rgba(18,8,10,0.58);
-    backdrop-filter:blur(1.5px);
-    -webkit-backdrop-filter:blur(1.5px);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    pointer-events:none;
+    border:1px solid rgba(255,255,255,0.35);
+    background:rgba(20,20,20,0.38);
+    color:#fff;
+    padding:0.7rem 1.4rem;
+    border-radius:999px;
+    font-family:'Noto Serif TC',serif;
+    font-size:1rem;
+    font-weight:700;
+    letter-spacing:0.22em;
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    box-shadow:0 8px 30px rgba(0,0,0,0.18);
   ">
-    <div style="
-      border:1px solid rgba(255,255,255,0.45);
-      background:rgba(20,20,20,0.55);
-      color:#fff;
-      padding:0.7rem 1.4rem;
-      border-radius:999px;
-      font-family:'Noto Serif TC',serif;
-      font-size:1rem;
-      font-weight:700;
-      letter-spacing:0.22em;
-      box-shadow:0 8px 30px rgba(0,0,0,0.35);
-    ">
-      SOLD OUT
-    </div>
+    SOLD OUT
   </div>
+</div>
 
   <div class="spec-top" style="opacity:0.55;">
     <img src="DSC05345.jpg" alt="6粒裝" class="spec-photo" onerror="this.style.display='none'">
