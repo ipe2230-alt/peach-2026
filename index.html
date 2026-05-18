@@ -461,69 +461,108 @@
       </div>
     </div>
 
-<!-- SOLD OUT 蒙版 -->
-<div style="
-  position:absolute;
-  inset:0;
-  z-index:8;
-  background:rgba(25,12,14,0.16);
-  backdrop-filter:blur(0.6px);
-  -webkit-backdrop-filter:blur(0.6px);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  pointer-events:none;
+<!-- Spec B: 6粒 SOLD OUT -->
+<div class="spec-row" style="
+  position:relative;
+  overflow:hidden;
 ">
 
+  <!-- SOLD OUT 蒙版 -->
   <div style="
-    text-align:center;
-    transform:translateY(-0.2rem);
+    position:absolute;
+    inset:0;
+    z-index:8;
+    background:rgba(25,12,14,0.16);
+    backdrop-filter:blur(0.6px);
+    -webkit-backdrop-filter:blur(0.6px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    pointer-events:none;
   ">
 
     <div style="
-      display:inline-block;
-      border:1px solid rgba(255,255,255,0.35);
-      background:rgba(20,20,20,0.38);
-      color:#fff;
-      padding:0.7rem 1.4rem;
-      border-radius:999px;
-      font-family:'Noto Serif TC',serif;
-      font-size:1rem;
-      font-weight:700;
-      letter-spacing:0.22em;
-      backdrop-filter:blur(10px);
-      -webkit-backdrop-filter:blur(10px);
-      box-shadow:0 8px 30px rgba(0,0,0,0.18);
+      text-align:center;
+      transform:translateY(-0.2rem);
     ">
-      SOLD OUT
-    </div>
 
-    <div style="
-      margin-top:0.55rem;
-      color:rgba(253,246,239,0.82);
-      font-size:0.72rem;
-      letter-spacing:0.12em;
-      line-height:1.6;
-      text-shadow:0 2px 10px rgba(0,0,0,0.45);
-      font-family:'Noto Serif TC',serif;
-    ">
-      若後續仍有產量將再限量開放
+      <div style="
+        display:inline-block;
+        border:1px solid rgba(255,255,255,0.35);
+        background:rgba(20,20,20,0.38);
+        color:#fff;
+        padding:0.7rem 1.4rem;
+        border-radius:999px;
+        font-family:'Noto Serif TC',serif;
+        font-size:1rem;
+        font-weight:700;
+        letter-spacing:0.22em;
+        backdrop-filter:blur(10px);
+        -webkit-backdrop-filter:blur(10px);
+        box-shadow:0 8px 30px rgba(0,0,0,0.18);
+      ">
+        SOLD OUT
+      </div>
+
+      <div style="
+        margin-top:0.55rem;
+        color:rgba(253,246,239,0.82);
+        font-size:0.72rem;
+        letter-spacing:0.12em;
+        line-height:1.6;
+        text-shadow:0 2px 10px rgba(0,0,0,0.45);
+        font-family:'Noto Serif TC',serif;
+      ">
+        若後續仍有產量將再限量開放
+      </div>
+
     </div>
 
   </div>
 
-</div>
+  <!-- 商品內容 -->
+  <div class="spec-top" style="opacity:0.82;">
 
-  <div class="spec-top" style="opacity:0.55;">
-    <img src="DSC05345.jpg" alt="6粒裝" class="spec-photo" onerror="this.style.display='none'">
+    <img
+      src="DSC05345.jpg"
+      alt="6粒裝"
+      class="spec-photo"
+      onerror="this.style.display='none'"
+    >
 
     <div class="spec-info">
-      <div class="spec-name">6 粒裝頂級大果禮盒</div>
 
-      <div style="display:flex; gap:0.4rem; flex-wrap:wrap; margin-bottom:0.45rem;">
-        <span class="spec-tag" style="background:rgba(196,151,106,0.2); border-color:var(--gold); color:var(--gold-light);">頂級大果</span>
-        <div class="spec-tag">單果 6 兩以上 (220g)</div>
-        <span class="spec-tag" style="background:rgba(74,124,111,0.15); border-color:rgba(74,180,140,0.3); color:#8ed8c0;">含運費</span>
+      <div class="spec-name">
+        6 粒裝頂級大果禮盒
+      </div>
+
+      <div style="
+        display:flex;
+        gap:0.4rem;
+        flex-wrap:wrap;
+        margin-bottom:0.45rem;
+      ">
+
+        <span class="spec-tag" style="
+          background:rgba(196,151,106,0.2);
+          border-color:var(--gold);
+          color:var(--gold-light);
+        ">
+          頂級大果
+        </span>
+
+        <div class="spec-tag">
+          單果 6 兩以上 (220g)
+        </div>
+
+        <span class="spec-tag" style="
+          background:rgba(74,124,111,0.15);
+          border-color:rgba(74,180,140,0.3);
+          color:#8ed8c0;
+        ">
+          含運費
+        </span>
+
       </div>
 
       <div>
@@ -531,22 +570,44 @@
         <span class="spec-price-unit">/ 盒（含運）</span>
       </div>
 
-  
     </div>
+
   </div>
 
+  <!-- bottom -->
   <div class="spec-bottom" style="opacity:0.82;">
-    <span class="spec-bottom-label">目前已完售</span>
+
+    <span class="spec-bottom-label">
+      目前已完售
+    </span>
 
     <div class="qty-ctrl">
-      <button class="qty-btn" disabled style="opacity:0.35; cursor:not-allowed;">−</button>
-      <div class="qty-num" id="qb">0</div>
-      <button class="qty-btn" disabled style="opacity:0.35; cursor:not-allowed;">＋</button>
+
+      <button
+        class="qty-btn"
+        disabled
+        style="opacity:0.35; cursor:not-allowed;"
+      >
+        −
+      </button>
+
+      <div class="qty-num" id="qb">
+        0
+      </div>
+
+      <button
+        class="qty-btn"
+        disabled
+        style="opacity:0.35; cursor:not-allowed;"
+      >
+        ＋
+      </button>
+
     </div>
+
   </div>
 
 </div>
-
  
 
     <!-- 底部統一折扣說明 -->
