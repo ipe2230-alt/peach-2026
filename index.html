@@ -461,56 +461,48 @@
       </div>
     </div>
 
-  <!-- Spec B: 6粒 SOLD OUT -->
-<div class="spec-row" style="
-  position:relative;
-  opacity:0.72;
-  overflow:hidden;
-">
+<!-- Spec B: 6粒 SOLD OUT -->
+<div class="spec-row" style="position:relative; overflow:hidden;">
 
-  <!-- SOLD OUT -->
+  <!-- SOLD OUT 蒙版 -->
   <div style="
     position:absolute;
-    top:14px;
-    right:14px;
-    z-index:5;
-    background:rgba(20,20,20,0.82);
-    color:#f6efe8;
-    border:1px solid rgba(255,255,255,0.15);
-    backdrop-filter:blur(10px);
-    padding:0.42rem 0.8rem;
-    border-radius:999px;
-    font-size:0.72rem;
-    letter-spacing:0.18em;
-    font-weight:600;
+    inset:0;
+    z-index:8;
+    background:rgba(18,8,10,0.58);
+    backdrop-filter:blur(1.5px);
+    -webkit-backdrop-filter:blur(1.5px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    pointer-events:none;
   ">
-    SOLD OUT
+    <div style="
+      border:1px solid rgba(255,255,255,0.45);
+      background:rgba(20,20,20,0.55);
+      color:#fff;
+      padding:0.7rem 1.4rem;
+      border-radius:999px;
+      font-family:'Noto Serif TC',serif;
+      font-size:1rem;
+      font-weight:700;
+      letter-spacing:0.22em;
+      box-shadow:0 8px 30px rgba(0,0,0,0.35);
+    ">
+      SOLD OUT
+    </div>
   </div>
 
-  <div class="spec-top">
+  <div class="spec-top" style="opacity:0.55;">
     <img src="DSC05345.jpg" alt="6粒裝" class="spec-photo" onerror="this.style.display='none'">
 
     <div class="spec-info">
       <div class="spec-name">6 粒裝頂級大果禮盒</div>
 
       <div style="display:flex; gap:0.4rem; flex-wrap:wrap; margin-bottom:0.45rem;">
-        <span class="spec-tag" style="
-          background:rgba(196,151,106,0.2);
-          border-color:var(--gold);
-          color:var(--gold-light);
-        ">
-          頂級大果
-        </span>
-
+        <span class="spec-tag" style="background:rgba(196,151,106,0.2); border-color:var(--gold); color:var(--gold-light);">頂級大果</span>
         <div class="spec-tag">單果 6 兩以上 (220g)</div>
-
-        <span class="spec-tag" style="
-          background:rgba(74,124,111,0.15);
-          border-color:rgba(74,180,140,0.3);
-          color:#8ed8c0;
-        ">
-          含運費
-        </span>
+        <span class="spec-tag" style="background:rgba(74,124,111,0.15); border-color:rgba(74,180,140,0.3); color:#8ed8c0;">含運費</span>
       </div>
 
       <div>
@@ -523,6 +515,18 @@
       </div>
     </div>
   </div>
+
+  <div class="spec-bottom" style="opacity:0.55;">
+    <span class="spec-bottom-label">目前已完售</span>
+
+    <div class="qty-ctrl">
+      <button class="qty-btn" disabled style="opacity:0.35; cursor:not-allowed;">−</button>
+      <div class="qty-num" id="qb">0</div>
+      <button class="qty-btn" disabled style="opacity:0.35; cursor:not-allowed;">＋</button>
+    </div>
+  </div>
+
+</div>
 
   <div class="spec-bottom">
     <span class="spec-bottom-label">目前已完售</span>
